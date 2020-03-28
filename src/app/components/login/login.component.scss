@@ -24,7 +24,7 @@
 .login__form__item {
   display: flex;
   flex-direction: column;
-  height: 70px;
+  height: 60px;
   margin: 10px auto;
 }
 
@@ -59,6 +59,19 @@
 
 .form__item__validator {
   color: red;
+}
+
+.error__message-container {
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error__message {
+  color: red;
+  font-weight: bold;
+  margin: 0;
 }
 
 @media screen and (max-width: 480px) {

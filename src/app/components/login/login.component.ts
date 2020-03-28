@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { AuthService } from "../../services/auth/auth.service";
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,7 +12,9 @@ import { AuthService } from "../../services/auth/auth.service";
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  constructor( public authService: AuthService) {}
+  errorMessage: string;
+  submitted: boolean;
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -20,10 +23,19 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    let email = this.loginForm.controls['email'].value;
-    let password = this.loginForm.controls['password'].value;
-    this.authService.login(email, password);
+  async onSubmit() {
+    this.submitted = true;
+    this.errorMessage = '';
+    const email = this.loginForm.value['email'];
+    const password = this.loginForm.value['password'];
+    const auth = await this.authService.login(email, password);
+    if (auth.isAuth) {
+      this.router.navigate(['/home']);
+    } else {
+      this.submitted = false;
+      this.errorMessage = auth.errorCode === 'auth/wrong-password' ?
+        '¡Contraseña incorrecta!' : '¡El usuario no existe!';
+    }
   }
 
   get email() { return this.loginForm.get('email'); }

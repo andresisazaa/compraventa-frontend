@@ -29,6 +29,7 @@ import { NewMachineComponent } from './components/machines/new-machine/new-machi
 import { CustomersComponent } from './components/customers/customers/customers.component';
 import { CustomerComponent } from './components/customers/customer/customer.component';
 import { NewCustomerComponent } from './components/customers/new-customer/new-customer.component';
+import { HomeComponent } from './components/shared/home/home.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { NewCustomerComponent } from './components/customers/new-customer/new-cu
     NewMachineComponent,
     CustomersComponent,
     CustomerComponent,
-    NewCustomerComponent
+    NewCustomerComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
