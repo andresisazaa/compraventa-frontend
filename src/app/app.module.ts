@@ -16,6 +16,12 @@ import { NewEmployeeComponent } from './components/employees/new-employee/new-em
 import { ProvidersComponent } from './components/providers/providers/providers.component';
 import { ProviderComponent } from './components/providers/provider/provider.component';
 import { NewProviderComponent } from './components/providers/new-provider/new-provider.component';
+import { MachinesComponent } from './components/machines/machines/machines.component';
+import { MachineComponent } from './components/machines/machine/machine.component';
+import { NewMachineComponent } from './components/machines/new-machine/new-machine.component';
+import { CustomersComponent } from './components/customers/customers/customers.component';
+import { CustomerComponent } from './components/customers/customer/customer.component';
+import { NewCustomerComponent } from './components/customers/new-customer/new-customer.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +38,13 @@ import { NewProviderComponent } from './components/providers/new-provider/new-pr
     NewEmployeeComponent,
     ProvidersComponent,
     ProviderComponent,
-    NewProviderComponent
+    NewProviderComponent,
+    MachinesComponent,
+    MachineComponent,
+    NewMachineComponent,
+    CustomersComponent,
+    CustomerComponent,
+    NewCustomerComponent
   ],
   imports: [
     BrowserModule,
