@@ -1,0 +1,277 @@
+.x-row {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.x-row [class*="x-col-"] {
+  position: relative;
+  width: 100%;
+  flex: 1 1 auto;
+  vertical-align: middle;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.x-row .x-col-100 {
+  flex: 1 1 100%;
+  width: 100%;
+}
+
+.x-row .x-col-90 {
+  flex: 1 1 90%;
+  width: 90%;
+}
+
+@media all and (max-width: 950px) {
+  .x-row .x-col-90 + [class*="x-col-"] {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
+.x-row .x-col-80 {
+  flex: 1 1 80%;
+  width: 80%;
+}
+
+@media all and (max-width: 950px) {
+  .x-row .x-col-80 + [class*="x-col-"] {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
+.x-row .x-col-75 {
+  flex: 1 1 75%;
+  width: 75%;
+}
+
+@media all and (max-width: 950px) {
+  .x-row .x-col-75 + [class*="x-col-"] {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
+.x-row .x-col-70 {
+  flex: 1 1 70%;
+  width: 70%;
+}
+
+@media all and (max-width: 950px) {
+  .x-row .x-col-70 + [class*="x-col-"] {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
+.x-row .x-col-65 {
+  flex: 1 1 65%;
+  width: 65%;
+}
+
+@media all and (max-width: 950px) {
+  .x-row .x-col-65 + [class*="x-col-"] {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
+.x-row .x-col-66 {
+  flex: 1 1 66.66%;
+  width: 66.66%;
+}
+
+@media all and (max-width: 950px) {
+  .x-row .x-col-66 + [class*="x-col-"] {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
+.x-row .x-col-60 {
+  flex: 1 1 60%;
+  width: 60%;
+}
+
+@media all and (max-width: 950px) {
+  .x-row .x-col-60 + [class*="x-col-"] {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
+.x-row .x-col-55 {
+  flex: 1 1 55%;
+  width: 55%;
+}
+
+@media all and (max-width: 950px) {
+  .x-row .x-col-55 + [class*="x-col-"] {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
+.x-row .x-col-50 {
+  flex: 1 1 50%;
+  width: 50%;
+}
+
+@media all and (max-width: 950px) {
+  .x-row .x-col-50 {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 950px) {
+  .x-row .x-col-90,
+  .x-row .x-col-80,
+  .x-row .x-col-75,
+  .x-row .x-col-70,
+  .x-row .x-col-60,
+  .x-row .x-col-66,
+  .x-row .x-col-65,
+  .x-row .x-col-55,
+  .x-row .x-col-50 {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
+.x-row .x-col-45 {
+  flex: 1 1 45%;
+  width: 45%;
+}
+
+@media all and (max-width: 950px) {
+  .x-row .x-col-45 {
+    flex: 1 1 90%;
+    width: 90%;
+  }
+}
+
+.x-row .x-col-40 {
+  flex: 1 1 40%;
+  width: 40%;
+}
+
+@media all and (max-width: 950px) {
+  .x-row .x-col-40 {
+    flex: 1 1 80%;
+    width: 80%;
+  }
+}
+
+.x-row .x-col-auto {
+  flex: 1 1 auto;
+}
+
+.x-row .x-col-35 {
+  flex: 1 1 35%;
+  width: 35%;
+}
+
+@media all and (max-width: 950px) {
+  .x-row .x-col-35 {
+    flex: 1 1 70%;
+    width: 70%;
+  }
+}
+
+.x-row .x-col-33 {
+  flex: 1 1 33.33%;
+  width: 33.33%;
+}
+
+@media all and (max-width: 950px) {
+  .x-row .x-col-33 {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
+.x-row .x-col-30 {
+  flex: 1 1 30%;
+  width: 30%;
+}
+
+@media all and (max-width: 950px) {
+  .x-row .x-col-30 {
+    flex: 1 1 60%;
+    width: 60%;
+  }
+}
+
+.x-row .x-col-25 {
+  flex: 1 1 25%;
+  width: 25%;
+}
+
+@media all and (max-width: 950px) {
+  .x-row .x-col-25 {
+    flex: 1 1 50%;
+    width: 50%;
+  }
+}
+
+@media all and (max-width: 670px) {
+  .x-row .x-col-25 {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
+.x-row .x-col-20 {
+  flex: 1 1 20%;
+  width: 20%;
+}
+
+@media all and (max-width: 950px) {
+  .x-row .x-col-20 {
+    flex: 1 1 40%;
+    width: 40%;
+  }
+
+  .x-row .x-col-20 + .x-col-30 {
+    flex: 1 1 60%;
+    width: 60%;
+  }
+}
+
+.x-row .x-col-15 {
+  flex: 1 1 15%;
+  width: 15%;
+}
+@media all and (max-width: 950px) {
+  .x-row .x-col-15 {
+    flex: 1 1 30%;
+    width: 30%;
+  }
+}
+
+.x-row .x-col-10 {
+  flex: 1 1 10%;
+  width: 10%;
+}
+
+@media all and (max-width: 950px) {
+  .x-row .x-col-10 {
+    flex: 1 1 20%;
+    width: 20%;
+  }
+
+  .x-row .x-col-10 + .x-col-40 {
+    flex: 1 1 80%;
+    width: 80%;
+  }
+}
+
+[class*="x-col-"] {
+  padding: 10px 5px;
+  border: 1px solid #e8e8e8;
+}
