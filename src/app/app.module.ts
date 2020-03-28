@@ -4,6 +4,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { SalesComponent } from './components/sales/sales/sales.component';
@@ -24,6 +29,7 @@ import { NewMachineComponent } from './components/machines/new-machine/new-machi
 import { CustomersComponent } from './components/customers/customers/customers.component';
 import { CustomerComponent } from './components/customers/customer/customer.component';
 import { NewCustomerComponent } from './components/customers/new-customer/new-customer.component';
+import { HomeComponent } from './components/shared/home/home.component';
 
 @NgModule({
   declarations: [
@@ -46,13 +52,17 @@ import { NewCustomerComponent } from './components/customers/new-customer/new-cu
     NewMachineComponent,
     CustomersComponent,
     CustomerComponent,
-    NewCustomerComponent
+    NewCustomerComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
   providers: [],
   bootstrap: [AppComponent]

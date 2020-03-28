@@ -18,6 +18,10 @@
                     <button class="form__button__submit" type="submit" [disabled]="loginForm.invalid">
                         Iniciar sesión</button>
                 </div>
+                <div class="error__message-container">
+                    <i *ngIf="submitted" class="fas fa-circle-notch fa-spin fa-2x"></i>
+                    <p *ngIf="errorMessage" class="error__message">{{errorMessage}}</p>
+                </div>
             </form>
         </div>
     </div>
