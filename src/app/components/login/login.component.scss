@@ -32,10 +32,11 @@
   color: navy;
   font-style: italic;
   font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .form__item__input {
-  padding: 2px;
+  padding: 4px;
   border: none;
   border-bottom: 1px solid black;
   outline: none;
@@ -52,6 +53,7 @@
   color: white;
   font-weight: bold;
 }
+
 .form__button__submit:disabled {
   background-color: gray;
   border: 1px solid gray;
