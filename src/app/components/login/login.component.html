@@ -1,1 +1,24 @@
-<p>login works!</p>
+<section class="login-section">
+    <div class="x-row">
+        <div class="x-col-100">
+            <h1 class="login-section__title">Compraventa</h1>
+            <form id="login__form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="login__form__item">
+                    <label class="form__item__label">Usuario:</label>
+                    <input type="email" class="form__item__input" formControlName="email" />
+                    <div *ngIf="email.errors && email.errors.email && email.dirty" class="form__item__validator">
+                        <small>¡Email no válido!</small>
+                    </div>
+                </div>
+                <div class="login__form__item">
+                    <label class="form__item__label">Contraseña:</label>
+                    <input type="password" class="form__item__input" formControlName="password" />
+                </div>
+                <div class="login__form__item">
+                    <button class="form__button__submit" type="submit" [disabled]="loginForm.invalid">
+                        Iniciar sesión</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
