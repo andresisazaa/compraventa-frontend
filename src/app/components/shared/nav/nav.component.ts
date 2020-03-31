@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
-  t
+
   constructor(private authService: AuthService, private router: Router) { }
   open: boolean = true;
   @Output() onSidebarChanges: EventEmitter<boolean> = new EventEmitter<boolean>();

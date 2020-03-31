@@ -79,12 +79,13 @@
   top: 0;
   width: 50px;
   color: $secundary-blue;
-  background-color: white;
+  background-color: whitesmoke;
   text-decoration: none;
-  font-size: 3rem;
+  font-size: 2rem;
   transition: 0.25s linear;
   border: none;
   outline: none;
+  vertical-align: middle;
 }
 
 .navbar__button--open {
