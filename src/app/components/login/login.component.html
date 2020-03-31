@@ -1,7 +1,7 @@
 <section class="login-section">
     <div class="x-row">
         <div class="x-col-100">
-            <form class="login__form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <form class="login__form animated bounceInLeft fast" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <h1 class="login__form__title">ConfectApp</h1>
                 <div class="login__form__item">
                     <label class="form__item__label">Usuario:</label>
@@ -21,8 +21,8 @@
                         Iniciar sesión</button>
                 </div>
                 <div class="error__message-container">
-                    <i *ngIf="submitted" class="fas fa-circle-notch fa-spin"></i>
-                    <p *ngIf="errorMessage" class="error__message">{{errorMessage}}</p>
+                    <i *ngIf="submitted" class="fa fa-circle-o-notch fa-spin"></i>
+                    <p *ngIf="errorMessage" class="error__message animated fadeIn fast">{{errorMessage}}</p>
                 </div>
             </form>
         </div>
