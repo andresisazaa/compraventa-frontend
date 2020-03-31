@@ -6,9 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+  open: boolean = true;
   constructor() { }
 
+  changeSidebar(sidebarStatus: boolean) {
+    this.open = sidebarStatus;
+  }
   ngOnInit(): void {
   }
 

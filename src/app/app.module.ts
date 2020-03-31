@@ -31,6 +31,7 @@ import { CustomerComponent } from './components/customers/customer/customer.comp
 import { NewCustomerComponent } from './components/customers/new-customer/new-customer.component';
 import { HomeComponent } from './components/shared/home/home.component';
 import { AuthInterceptorService } from './services/auth/auth-interceptor.service';
+import { NavComponent } from './components/shared/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { AuthInterceptorService } from './services/auth/auth-interceptor.service
     CustomersComponent,
     CustomerComponent,
     NewCustomerComponent,
-    HomeComponent
+    HomeComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,100 @@
+@import "../../../../scss/variables";
+
+.navbar {
+  position: fixed;
+  height: 100%;
+  width: 200px;
+  //   left: -200px;
+  left: 0;
+  top: 0;
+  background-color: $primary-blue;
+  cursor: pointer;
+  z-index: 1;
+  transform: translateX(-100%);
+  padding-top: 1rem;
+  transition: 0.25s linear;
+}
+
+.navbar--active {
+  //   left: 0;
+  transform: translateX(0);
+}
+
+.navbar---closed {
+  width: 0;
+}
+
+.navbar__link {
+  width: 180px;
+  padding: 0.5rem;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.navbar__link__icon {
+  margin: 0 0.5rem;
+  font-size: 1.5rem;
+  color: $primary-orange;
+}
+
+.navbar__profile-container {
+  text-align: center;
+  color: white;
+}
+
+.profile__image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile__image {
+  width: 100px;
+  height: 100px;
+}
+.navbar__links-container {
+  margin-top: 1rem;
+}
+.navbar__list__items {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__list__item {
+  padding: 0.5rem;
+}
+
+.navbar__list__item:hover {
+  background-color: $primary-green;
+}
+
+.navbar__button {
+  position: absolute;
+  left: 200px;
+  top: 0;
+  width: 50px;
+  color: $secundary-blue;
+  background-color: white;
+  text-decoration: none;
+  font-size: 3rem;
+  transition: 0.25s linear;
+  border: none;
+  outline: none;
+}
+
+.navbar__button--open {
+  left: 0;
+}
+@media screen and (max-height: 450px) {
+  .navbar {
+    padding-top: 1rem;
+  }
+  .navbar__link {
+    font-size: 1rem;
+  }
+}

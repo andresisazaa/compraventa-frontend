@@ -1,0 +1,37 @@
+<nav class="navbar" [ngClass]="{'navbar--active': open}">
+    <div class="navbar__profile-container">
+        <a routerLink="/perfil">
+            <div class="profile__image-container">
+                <img class="profile__image" src="assets/images/user.svg" alt="Profile picture" />
+            </div>
+        </a>
+        <h3>Pepito Perez</h3>
+    </div>
+    <div class="navbar__links-container">
+        <ul class="navbar__list__items">
+            <li class="navbar__list__item" routerLinkActive="navbar__link--active">
+                <a routerLink="/ventas" class="navbar__link">
+                    <i class="fas fa-chart-line navbar__link__icon"></i>
+                    Ventas</a>
+            </li>
+            <li class="navbar__list__item" routerLinkActive="navbar__link--active">
+                <a routerLink="/compras" class="navbar__link">
+                    <i class="fas fa-shopping-cart navbar__link__icon"></i>
+                    Compras</a>
+            </li>
+            <li class="navbar__list__item" routerLinkActive="navbar__link--active">
+                <a routerLink="/empleados" class="navbar__link">
+                    <i class="fas fa-users navbar__link__icon"></i>
+                    Empleados</a>
+            </li>
+            <li class="navbar__list__item" routerLinkActive="navbar__link--active">
+                <a (click)="logout()" class="navbar__link">
+                    <i class="fas fa-sign-out-alt navbar__link__icon"></i>
+                    Cerrar sesión</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<button [ngClass]="{'navbar__button--open': !open}" class="navbar__button" (click)="toggleSidebar()">
+    <i class="fas" [ngClass]="{'fa-angle-left': open, 'fa-angle-right': !open}"></i>
+</button>
