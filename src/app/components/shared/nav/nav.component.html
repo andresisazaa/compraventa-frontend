@@ -11,27 +11,27 @@
         <ul class="navbar__list__items">
             <li class="navbar__list__item" routerLinkActive="navbar__link--active">
                 <a routerLink="/ventas" class="navbar__link">
-                    <i class="fas fa-chart-line navbar__link__icon"></i>
+                    <i class="fa fa-line-chart navbar__link__icon"></i>
                     Ventas</a>
             </li>
             <li class="navbar__list__item" routerLinkActive="navbar__link--active">
                 <a routerLink="/compras" class="navbar__link">
-                    <i class="fas fa-shopping-cart navbar__link__icon"></i>
+                    <i class="fa fa-shopping-bag navbar__link__icon"></i>
                     Compras</a>
             </li>
             <li class="navbar__list__item" routerLinkActive="navbar__link--active">
                 <a routerLink="/empleados" class="navbar__link">
-                    <i class="fas fa-users navbar__link__icon"></i>
+                    <i class="fa fa-users navbar__link__icon"></i>
                     Empleados</a>
             </li>
             <li class="navbar__list__item" routerLinkActive="navbar__link--active">
                 <a (click)="logout()" class="navbar__link">
-                    <i class="fas fa-sign-out-alt navbar__link__icon"></i>
+                    <i class="fa fa-sign-out navbar__link__icon"></i>
                     Cerrar sesión</a>
             </li>
         </ul>
     </div>
 </nav>
 <button [ngClass]="{'navbar__button--open': !open}" class="navbar__button" (click)="toggleSidebar()">
-    <i class="fas" [ngClass]="{'fa-angle-left': open, 'fa-angle-right': !open}"></i>
+    <i class="fa" [ngClass]="{'fa-angle-left': open, 'fa-angle-right': !open}"></i>
 </button>
