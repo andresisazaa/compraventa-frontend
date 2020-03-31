@@ -4,7 +4,6 @@
   position: fixed;
   height: 100%;
   width: 200px;
-  //   left: -200px;
   left: 0;
   top: 0;
   background-color: $primary-blue;
@@ -16,7 +15,6 @@
 }
 
 .navbar--active {
-  //   left: 0;
   transform: translateX(0);
 }
 
@@ -56,6 +54,7 @@
   width: 100px;
   height: 100px;
 }
+
 .navbar__links-container {
   margin-top: 1rem;
 }
@@ -69,7 +68,8 @@
   padding: 0.5rem;
 }
 
-.navbar__list__item:hover {
+.navbar__list__item:hover,
+.navbar__list__item--active {
   background-color: $primary-green;
 }
 
@@ -86,6 +86,7 @@
   border: none;
   outline: none;
   vertical-align: middle;
+  cursor: pointer;
 }
 
 .navbar__button--open {
