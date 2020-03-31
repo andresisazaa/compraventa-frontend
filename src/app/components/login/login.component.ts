@@ -31,11 +31,28 @@ export class LoginComponent implements OnInit {
     const auth = await this.authService.login(email, password);
     if (auth.isAuth) {
       this.router.navigate(['/home']);
+      this.submitted = false;
     } else {
       this.submitted = false;
-      this.errorMessage = auth.errorCode === 'auth/wrong-password' ?
-        '¡Contraseña incorrecta!' : '¡El usuario no existe!';
+      this.errorMessage = this.getErrorMessage(auth.errorCode);
     }
+  }
+
+  getErrorMessage(errorCode: string): string {
+    switch (errorCode) {
+      case 'auth/wrong-password':
+        return '¡Contraseña incorrecta!';
+
+      case 'auth/user-not-found':
+        return '¡El usuario no existe!';
+
+      default:
+        return '¡Error inesperado!';
+    }
+  }
+
+  logout(): void {
+    this.authService.logout();
   }
 
   get email() { return this.loginForm.get('email'); }
