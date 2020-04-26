@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendUrl: 'http://localhost:3000',
+  backendUrl: 'https://compraventa-backend.herokuapp.com',
   firebase: {
     apiKey: 'AIzaSyB4KqHPy-QVqUkOXj-n53gIuZt0cZxEyac',
     authDomain: 'proyecto-ing-web.firebaseapp.com',
