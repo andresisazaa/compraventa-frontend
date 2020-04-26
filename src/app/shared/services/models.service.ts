@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Model } from '../../models/model.model';
 import { map } from 'rxjs/operators';
+import { Model } from '../models/model.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ModelsService {
-  MODELS_URL = `${environment.backendUrl}/models`;
+  private MODELS_URL = `${environment.backendUrl}/models`;
+
   constructor(private http: HttpClient) {}
 
   getModels(): Observable<Model[]> {
