@@ -1,27 +1,45 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { HomeComponent } from './components/shared/home/home.component';
-import { SalesComponent } from './components/sales/sales/sales.component';
-import { PurchasesComponent } from './components/purchases/purchases/purchases.component';
-import { EmployeesComponent } from './components/employees/employees/employees.component';
-import { AuthGuard } from './guards/auth.guard';
-
+import { AuthGuard } from './shared/guards/auth.guard';
+import { BaseComponent } from './components/base/base.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
   {
-    path: '', component: HomeComponent, canActivate: [AuthGuard],
+    path: '',
+    component: BaseComponent,
+    canActivate: [AuthGuard],
     children: [
-      { path: 'ventas', component: SalesComponent },
-      { path: 'compras', component: PurchasesComponent },
-      { path: 'empleados', component: EmployeesComponent }]
+      {
+        path: 'inventario',
+        loadChildren: () =>
+          import('./inventory/inventory.module').then((m) => m.InventoryModule),
+      },
+      {
+        path: 'empleados',
+        loadChildren: () =>
+          import('./employees/employees.module').then((m) => m.EmployeesModule),
+      },
+      {
+        path: 'ventas',
+        loadChildren: () =>
+          import('./sales/sales.module').then((m) => m.SalesModule),
+      },
+      {
+        path: 'compras',
+        loadChildren: () =>
+          import('./purchases/purchases.module').then((m) => m.PurchasesModule),
+      },
+    ],
   },
-  { path: '**', pathMatch: 'full', redirectTo: '' }
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
+  { path: '**', pathMatch: 'full', redirectTo: 'auth/login' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
