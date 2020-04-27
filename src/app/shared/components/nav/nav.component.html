@@ -1,5 +1,5 @@
-<nav class="navbar" [ngClass]="{'navbar--active': open}">
-  <div class="navbar__profile-container">
+<nav class="nav" [ngClass]="{'nav--active': open}">
+  <div class="nav__profile-container">
     <a routerLink="/perfil">
       <div class="profile__image-container">
         <img class="profile__image" src="assets/images/user.svg" alt="Profile picture" />
@@ -7,36 +7,36 @@
     </a>
     <h3>Pepito Perez</h3>
   </div>
-  <div class="navbar__links-container">
-    <ul class="navbar__list__items">
-      <li class="navbar__list__item" routerLinkActive="navbar__list__item--active">
-        <a routerLink="/inventario" class="navbar__link">
-          <i class="fa fa-cubes navbar__link__icon"></i>
+  <div class="nav__links-container">
+    <ul class="nav__list__items">
+      <li class="nav__list__item" routerLinkActive="nav__list__item--active">
+        <a routerLink="/inventario" class="nav__link">
+          <i class="fa fa-cubes nav__link__icon"></i>
           Inventario</a>
       </li>
-      <li class="navbar__list__item" routerLinkActive="navbar__list__item--active">
-        <a routerLink="/ventas" class="navbar__link">
-          <i class="fa fa-line-chart navbar__link__icon"></i>
+      <li class="nav__list__item" routerLinkActive="nav__list__item--active">
+        <a routerLink="/ventas" class="nav__link">
+          <i class="fa fa-line-chart nav__link__icon"></i>
           Ventas</a>
       </li>
-      <li class="navbar__list__item" routerLinkActive="navbar__list__item--active">
-        <a routerLink="/compras" class="navbar__link">
-          <i class="fa fa-shopping-bag navbar__link__icon"></i>
+      <li class="nav__list__item" routerLinkActive="nav__list__item--active">
+        <a routerLink="/compras" class="nav__link">
+          <i class="fa fa-shopping-bag nav__link__icon"></i>
           Compras</a>
       </li>
-      <li class="navbar__list__item" routerLinkActive="navbar__list__item--active">
-        <a routerLink="/empleados" class="navbar__link">
-          <i class="fa fa-users navbar__link__icon"></i>
+      <li class="nav__list__item" routerLinkActive="nav__list__item--active">
+        <a routerLink="/empleados" class="nav__link">
+          <i class="fa fa-users nav__link__icon"></i>
           Empleados</a>
       </li>
-      <li class="navbar__list__item">
-        <a (click)="logout()" class="navbar__link">
-          <i class="fa fa-sign-out navbar__link__icon"></i>
+      <li class="nav__list__item">
+        <a (click)="logout()" class="nav__link">
+          <i class="fa fa-sign-out nav__link__icon"></i>
           Cerrar sesión</a>
       </li>
     </ul>
   </div>
 </nav>
-<button [ngClass]="{'navbar__button--open': !open}" class="navbar__button" (click)="toggleSidebar()">
+<button [ngClass]="{'nav__button--open': !open}" class="nav__button" (click)="toggleSidebar()">
   <i class="fa fa-bars"></i>
 </button>

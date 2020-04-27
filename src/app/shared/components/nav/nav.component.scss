@@ -1,6 +1,6 @@
 @import "../../../../scss/variables";
 
-.navbar {
+.nav {
   position: fixed;
   height: 100%;
   width: 200px;
@@ -14,15 +14,15 @@
   transition: 0.25s linear;
 }
 
-.navbar--active {
+.nav--active {
   transform: translateX(0);
 }
 
-.navbar---closed {
+.nav---closed {
   width: 0;
 }
 
-.navbar__link {
+.nav__link {
   width: 180px;
   padding: 0.5rem;
   text-decoration: none;
@@ -33,13 +33,13 @@
   transition: 0.3s;
 }
 
-.navbar__link__icon {
+.nav__link__icon {
   margin: 0 0.5rem;
   font-size: 1.5rem;
   color: $primary-orange;
 }
 
-.navbar__profile-container {
+.nav__profile-container {
   text-align: center;
   color: white;
 }
@@ -55,25 +55,25 @@
   height: 100px;
 }
 
-.navbar__links-container {
+.nav__links-container {
   margin-top: 1rem;
 }
-.navbar__list__items {
+.nav__list__items {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-.navbar__list__item {
+.nav__list__item {
   padding: 0.5rem;
 }
 
-.navbar__list__item:hover,
-.navbar__list__item--active {
+.nav__list__item:hover,
+.nav__list__item--active {
   background-color: $primary-green;
 }
 
-.navbar__button {
+.nav__button {
   position: absolute;
   left: 200px;
   top: 0;
@@ -89,14 +89,14 @@
   cursor: pointer;
 }
 
-.navbar__button--open {
+.nav__button--open {
   left: 0;
 }
 @media screen and (max-height: 450px) {
-  .navbar {
+  .nav {
     padding-top: 1rem;
   }
-  .navbar__link {
+  .nav__link {
     font-size: 1rem;
   }
 }
