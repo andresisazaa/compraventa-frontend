@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { NewEmployeeComponent } from './components/new-employee/new-employee.component';
+import { EmployeeMenuComponent } from './components/employee-menu/employee-menu.component';
 
 
 const routes: Routes = [

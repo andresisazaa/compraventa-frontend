@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "compraventa-frontend"
+  "defaultProject": "compraventa-frontend",
+  "cli": {
+    "analytics": "410a90b3-d84a-445d-9b91-0cb1a5a3d5ac"
+  }
 }
