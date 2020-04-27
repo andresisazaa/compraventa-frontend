@@ -25,9 +25,9 @@ export class BrandsService {
       .pipe(map((response: Brand) => response));
   }
 
-  createBrand(brandName: string): Observable<Brand> {
+  createBrand(brandData: Brand): Observable<Brand> {
     return this.http
-      .post(this.BRANDS_URL, { brandName })
+      .post(this.BRANDS_URL, { ...brandData })
       .pipe(map((response: Brand) => response));
   }
 

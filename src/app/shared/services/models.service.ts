@@ -25,12 +25,7 @@ export class ModelsService {
       .pipe(map((response: Model) => response));
   }
 
-  createModel(
-    modelName: string,
-    brandId: number,
-    description?: string
-  ): Observable<Model> {
-    const modelData = { modelName, brandId, description };
+  createModel(modelData): Observable<Model> {
     return this.http
       .post(`${this.MODELS_URL}`, modelData)
       .pipe(map((response: Model) => response));
