@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModelsService } from 'src/app/shared/services/models.service';
 import { Model } from 'src/app/shared/models/model.model';
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-models-list',
@@ -10,16 +8,19 @@ import { Location } from '@angular/common';
   styleUrls: ['./models-list.component.scss'],
 })
 export class ModelsListComponent implements OnInit {
+  loadingModels: boolean;
   models: Model[] = [];
-  constructor(private modelsService: ModelsService, private location: Location) {}
+  constructor(private modelsService: ModelsService) {}
 
   ngOnInit(): void {
-    this.modelsService.getModels().subscribe((models: Model[]) => {
-      this.models = models;
-    });
+    this.getModels();
   }
 
-  goBack() {
-    this.location.back();
+  getModels() {
+    this.loadingModels = true;
+    this.modelsService.getModels().subscribe((models: Model[]) => {
+      this.models = models;
+      this.loadingModels = false;
+    });
   }
 }

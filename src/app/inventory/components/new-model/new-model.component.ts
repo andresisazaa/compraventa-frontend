@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  FormBuilder,
-  Validators,
-} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BrandsService } from 'src/app/shared/services/brands.service';
 import { ModelsService } from 'src/app/shared/services/models.service';
 import { Brand } from 'src/app/shared/models/brand.model';
 import { Model } from 'src/app/shared/models/model.model';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-new-model',
   templateUrl: './new-model.component.html',
@@ -48,7 +44,12 @@ export class NewModelComponent implements OnInit {
       description: this.modelForm.value.description,
       brandId: this.modelForm.value.brandId,
     };
-    this.modelsService.createModel(newModel).subscribe((model) => {
-    });
+    // Swal.showLoading();
+    // Swal.fire({
+    //   title: 'Loading',
+    //   icon: 'info',
+    //   text: 'Creando modelo...',
+    // });
+    this.modelsService.createModel(newModel).subscribe((model) => {});
   }
 }
