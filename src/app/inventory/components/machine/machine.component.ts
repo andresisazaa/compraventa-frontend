@@ -19,7 +19,6 @@ export class MachineComponent implements OnInit {
       const id = Number(params.id);
       this.machinesService.getMachineById(id).subscribe((machine) => {
         this.machine = machine;
-        console.log(this.machine);
       });
     });
   }

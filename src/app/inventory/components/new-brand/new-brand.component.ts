@@ -25,10 +25,8 @@ export class NewBrandComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.brandForm.value);
     const newBrand: Brand = this.brandForm.value;
     this.brandsService.createBrand(newBrand).subscribe((brand) => {
-      console.log(brand, 'BRAND CREADA');
     });
   }
 }

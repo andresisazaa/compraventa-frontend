@@ -49,7 +49,6 @@ export class NewModelComponent implements OnInit {
       brandId: this.modelForm.value.brandId,
     };
     this.modelsService.createModel(newModel).subscribe((model) => {
-      console.log('MODELO CREADO', model);
     });
   }
 }
