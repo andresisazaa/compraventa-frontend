@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col">
+    <button (click)="goBack()" class="btn btn-danger">Volver</button>
+    <ng-container *ngIf="models.length === 0; else hasMachines">
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+<ng-template #hasMachines>
+  <div class="row">
+    <div class="col mb-4">
+      <a routerLink="new" class="btn btn-primary">Agregar Modelo</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h4>Listado de Modelos</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <table
+        class="table table-responsive table-hover table-striped table-sm animated fadeIn"
+      >
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Modelo</th>
+            <th scope="col">Marca</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let model of models">
+            <td>{{ model.id }}</td>
+            <td>{{ model.modelName }}</td>
+            <td>{{ model.brand.brandName }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ng-template>

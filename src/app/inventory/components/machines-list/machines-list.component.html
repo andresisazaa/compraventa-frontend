@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col">
+    <h4 class="font-weight-bolder">Listado de Máquinas</h4>
+    <h5>Seleccione una para ver más detalles</h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8 mx-auto">
+    <div class="table-wrapper">
+      <app-loading [loading]="loadingMachines"></app-loading>
+      <table
+        class="table table-responsive-sm table-hover table-striped table-sm animated fadeIn"
+      >
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Modelo</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Valor compra</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let machine of machines"
+            (click)="viewMachineDetails(machine.id)"
+          >
+            <td>{{ machine.id }}</td>
+            <td>{{ machine.model.name }}</td>
+            <td>{{ machine.model.brand }}</td>
+            <td>
+              <span
+                class="badge"
+                [ngClass]="
+                  machine.type === 'nueva' ? 'badge-info' : 'badge-warning'
+                "
+                >{{ machine.type }}</span
+              >
+            </td>
+            <td>
+              {{
+                machine.purchaseValue | currency: "COP":"symbol-narrow":"1.0-0"
+              }}
+            </td>
+            <td>
+              <span class="badge badge-success">{{
+                machine.statuses[machine.statuses.length - 1].name
+              }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

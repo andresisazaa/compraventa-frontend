@@ -1,1 +1,32 @@
-<p>machine works!</p>
+<div class="machine" *ngIf="machine">
+  <p>id: {{machine.id}}</p>
+  <p>tipo: {{machine.type}}</p>
+  <p>Valor de compra: {{machine.purchaseValue}}</p>
+  <div>
+    <h3>modelo</h3>
+    <p>modelo {{machine.model.name}}</p>
+    <p>marca {{machine.model.brand}}</p>
+  </div>
+
+  <div>
+    <h3>Punto de venta</h3>
+    <p>Punto de venta {{machine.pointOfSale.name}}</p>
+    <p>Direccion {{machine.pointOfSale.address}}</p>
+  </div>
+
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Estado</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let status of machine.statuses">
+        <td>{{status.name}}</td>
+        <td>{{status.date}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
