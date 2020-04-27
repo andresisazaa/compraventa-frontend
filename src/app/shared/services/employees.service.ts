@@ -13,11 +13,16 @@ export class EmployeesService {
   constructor(private http: HttpClient) {}
 
   getEmployees(): Observable<[]> {
-    return this.http.get(this.EMPLOYEES_URL)
-    .pipe(map((response: []) => response));
+    return this.http
+      .get(this.EMPLOYEES_URL)
+      .pipe(map((response: []) => response));
   }
 
   getEmployeeById(id: number) {
     return this.http.get(`${this.EMPLOYEES_URL}/${id}`);
+  }
+
+  createEmployee(employeeData) {
+    return this.http.post(this.EMPLOYEES_URL, employeeData);
   }
 }

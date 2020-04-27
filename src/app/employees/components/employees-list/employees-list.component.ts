@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeesService } from 'src/app/shared/services/employees.service';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-employees',
-  templateUrl: './employees.component.html',
-  styleUrls: ['./employees.component.scss'],
+  selector: 'app-employees-list',
+  templateUrl: './employees-list.component.html',
+  styleUrls: ['./employees-list.component.scss'],
 })
-export class EmployeesComponent implements OnInit {
+export class EmployeesListComponent implements OnInit {
   employees = [];
   loadingEmployees: boolean;
   constructor(

@@ -4,20 +4,22 @@ import { EmployeesComponent } from './components/employees/employees.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { NewEmployeeComponent } from './components/new-employee/new-employee.component';
 import { EmployeeMenuComponent } from './components/employee-menu/employee-menu.component';
-
+import { EmployeesListComponent } from './components/employees-list/employees-list.component';
 
 const routes: Routes = [
   {
-    path: '', component: EmployeesComponent, children:
-      [
-        { path: 'list', component: EmployeeComponent },
-        { path: 'new', component: NewEmployeeComponent }
-      ]
-  }
+    path: '',
+    component: EmployeesComponent,
+    children: [
+      { path: '', component: EmployeesListComponent },
+      { path: 'new', component: NewEmployeeComponent },
+      { path: ':id', component: EmployeeComponent },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class EmployeesRoutingModule { }
+export class EmployeesRoutingModule {}
