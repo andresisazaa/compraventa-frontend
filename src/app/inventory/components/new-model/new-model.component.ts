@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  AbstractControl,
+} from '@angular/forms';
 import { BrandsService } from 'src/app/shared/services/brands.service';
 import { ModelsService } from 'src/app/shared/services/models.service';
 import { Brand } from 'src/app/shared/models/brand.model';
@@ -17,11 +22,12 @@ export class NewModelComponent implements OnInit {
     private fb: FormBuilder,
     private brandsService: BrandsService,
     private modelsService: ModelsService
-  ) {}
+  ) {
+    this.modelForm = this.createModelForm();
+  }
 
   ngOnInit(): void {
     this.getBrands();
-    this.modelForm = this.createModelForm();
   }
 
   getBrands() {
@@ -32,12 +38,15 @@ export class NewModelComponent implements OnInit {
 
   createModelForm(): FormGroup {
     return this.fb.group({
-      modelName: [null, Validators.required],
+      modelName: [null, [Validators.required, Validators.minLength(4)]],
       description: [null],
       brandId: [null, Validators.required],
     });
   }
-
+  log(evt) {
+      console.log(evt.target.value);
+      console.log(this.modelName.errors);
+  }
   onSubmit() {
     const newModel = {
       modelName: this.modelForm.value.modelName,
@@ -51,5 +60,9 @@ export class NewModelComponent implements OnInit {
     //   text: 'Creando modelo...',
     // });
     this.modelsService.createModel(newModel).subscribe((model) => {});
+  }
+
+  get modelName(): AbstractControl {
+    return this.modelForm.get('modelName');
   }
 }

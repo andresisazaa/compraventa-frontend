@@ -32,10 +32,10 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'auth',
+    path: 'login',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
-  { path: '**', pathMatch: 'full', redirectTo: 'auth/login' },
+  { path: '**', pathMatch: 'full', redirectTo: 'login' },
 ];
 
 @NgModule({
