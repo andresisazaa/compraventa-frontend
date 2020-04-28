@@ -11,6 +11,7 @@ import { PurchasesMenuComponent } from './components/purchases-menu/purchases-me
 import { ProvidersListComponent } from './components/providers-list/providers-list.component';
 import { PurchasesListComponent } from './components/purchases-list/purchases-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProvidersListComponent,
     PurchasesListComponent,
   ],
-  imports: [CommonModule, PurchasesRoutingModule, ReactiveFormsModule],
+  imports: [CommonModule, PurchasesRoutingModule, ReactiveFormsModule, SharedModule],
 })
 export class PurchasesModule {}

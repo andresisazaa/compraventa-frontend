@@ -1,4 +1,10 @@
 <div class="row">
+  <div class="col mb-2">
+    <app-back-button></app-back-button>
+  </div>
+</div>
+
+<div class="row">
   <div class="col">
     <a routerLink="new" class="btn btn-primary mb-4">Realizar Compra</a>
   </div>
@@ -19,7 +25,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let purchase of purchases" (click)="viewPurchaseDetails(purchase.id)">
+        <tr
+          *ngFor="let purchase of purchases"
+          (click)="viewPurchaseDetails(purchase.id)"
+        >
           <td>{{ purchase.id }}</td>
           <td>
             {{
