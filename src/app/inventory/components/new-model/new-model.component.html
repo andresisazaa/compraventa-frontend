@@ -1,4 +1,5 @@
 <form
+  *ngIf="modelForm"
   [formGroup]="modelForm"
   (ngSubmit)="onSubmit()"
   style="width: 350px;"
@@ -12,6 +13,7 @@
       [formControl]="modelName"
       type="text"
       class="form-control"
+      placeholder="Referencia"
     />
     <div class="text-muted" *ngIf="modelName.untouched && !modelName.dirty">
       <small>Requerido</small>
@@ -35,18 +37,33 @@
   <div class="form-group">
     <label>Descripción</label>
     <textarea
-      formControlName="description"
+      [formControl]="description"
       class="form-control"
-      rows="3"
+      rows="4"
     ></textarea>
+    <div
+      class="text-danger"
+      *ngIf="description.invalid && (description.dirty || description.touched)"
+    >
+      <small *ngIf="description.errors.maxlength">
+        Longitud máxima: {{ description.errors.maxlength.requiredLength }},
+        actual: {{ description.errors.maxlength.actualLength }}
+      </small>
+    </div>
+    <div
+      class="text-success"
+      *ngIf="description.valid && (description.dirty || description.touched)"
+    >
+      <small>Campo correcto</small>
+    </div>
   </div>
   <div class="form-group">
     <label>Marca</label>
     <select class="custom-select" formControlName="brandId">
       <option selected>Open this select menu</option>
-      <option *ngFor="let brand of brands" [value]="brand.id">{{
-        brand.brandName
-      }}</option>
+      <option *ngFor="let brand of brands" [value]="brand.id">
+        {{ brand.brandName }}
+      </option>
     </select>
   </div>
   <div class="form-group">
