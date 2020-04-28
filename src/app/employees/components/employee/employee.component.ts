@@ -6,47 +6,65 @@ import { PointsOfSaleService } from 'src/app/shared/services/points-of-sale.serv
 import { JobsService } from 'src/app/shared/services/jobs.service';
 import { Job } from 'src/app/shared/models/job.model';
 import { PointOfSale } from 'src/app/shared/models/pointOfSale.model';
-import { forkJoin } from 'rxjs';
+import { forkJoin, Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.scss']
+  styleUrls: ['./employee.component.scss'],
 })
 export class EmployeeComponent implements OnInit {
   employeeForm: FormGroup;
   jobs: Job[] = [];
   pointsOfSale: PointOfSale[] = [];
   employee: any;
+  id: number;
+  subscription: Subscription;
   constructor(
     private route: ActivatedRoute,
     private emplyeesService: EmployeesService,
     private fb: FormBuilder,
     private pointsOfSaleService: PointsOfSaleService,
     private jobsService: JobsService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) =>{
-      const id = Number(params.id);
-      forkJoin([this.getPointsOfSale(), this.getJobs()]).subscribe(()=>{})
-      this.emplyeesService.getEmployeeById(id).subscribe((employee) =>{
+    this.route.params.subscribe((params) => {
+      this.id = Number(params.id);
+      this.getFormData().subscribe(([employee, jobs, pointsOfSale]) => {
         this.employee = employee;
-        console.log(this.employee)
+        this.jobs = jobs;
+        this.pointsOfSale = pointsOfSale;
         this.employeeForm = this.createEmployeeForm();
       });
-    });    
+    });
+  }
+
+  getFormData() {
+    const jobs$ = this.jobsService.getJobs();
+    const pos$ = this.pointsOfSaleService.getPointsOfSale();
+    const employee$ = this.emplyeesService.getEmployeeById(this.id);
+    return forkJoin([employee$, jobs$, pos$]);
   }
 
   createEmployeeForm(): FormGroup {
     return this.fb.group({
-      name: [this.employee.name, [Validators.required, Validators.maxLength(50)]],
-      document: [this.employee.document, [Validators.required, Validators.maxLength(10)]],
+      name: [
+        { value: this.employee.name, disabled: true },
+        [Validators.required, Validators.maxLength(50)],
+      ],
+      document: [
+        { value: this.employee.document, disabled: true },
+        [Validators.required, Validators.maxLength(10)],
+      ],
       phone: [this.employee.phone, Validators.maxLength(10)],
       address: [this.employee.address, Validators.maxLength(60)],
-      email: [this.employee.email, [Validators.email, Validators.maxLength(50)]],
-      jobId: [this.employee.jobId, Validators.required],
-      posId: [this.employee.posId, Validators.required],
+      email: [
+        { value: this.employee.email, disabled: true },
+        [Validators.email, Validators.maxLength(50)],
+      ],
+      jobId: [this.employee.job.id, Validators.required],
+      posId: [this.employee.pointOfSale.id, Validators.required],
     });
   }
 
@@ -65,5 +83,4 @@ export class EmployeeComponent implements OnInit {
   onSubmit() {
     console.log(this.employeeForm.value);
   }
-
 }
