@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     const password = this.loginForm.value['password'];
     const auth = await this.authService.login(email, password);
     if (auth.isAuth) {
-      this.router.navigateByUrl('/ventas');
+      this.router.navigateByUrl('/inventario');
       this.submitted = false;
     } else {
       this.submitted = false;

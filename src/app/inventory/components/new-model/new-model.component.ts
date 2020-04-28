@@ -46,10 +46,7 @@ export class NewModelComponent implements OnInit {
       brandId: [null, Validators.required],
     });
   }
-  log(evt) {
-    console.log(evt.target.value);
-    console.log(this.modelName.errors);
-  }
+
   onSubmit() {
     if (this.modelForm.invalid) {
       return;
@@ -59,13 +56,25 @@ export class NewModelComponent implements OnInit {
       description: this.modelForm.value.description,
       brandId: this.modelForm.value.brandId,
     };
-    // Swal.showLoading();
-    // Swal.fire({
-    //   title: 'Loading',
-    //   icon: 'info',
-    //   text: 'Creando modelo...',
-    // });
-    // this.modelsService.createModel(newModel).subscribe((model) => {});
+    Swal.showLoading();
+    this.modelsService.createModel(newModel).subscribe(
+      (model) => {
+        Swal.hideLoading();
+        Swal.fire({
+          icon: 'success',
+          title: `¡Modelo creado correctamente!`,
+          text: `id: ${model.id}, modelo: ${model.modelName}`,
+        });
+      },
+      (error) => {
+        Swal.hideLoading();
+        Swal.fire({
+          icon: 'error',
+          title: '¡Ocurrió un error!',
+          text: `${error.message}`,
+        });
+      }
+    );
   }
 
   get modelName(): AbstractControl {
