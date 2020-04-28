@@ -4,6 +4,9 @@ import { PointsOfSaleService } from 'src/app/shared/services/points-of-sale.serv
 import { JobsService } from 'src/app/shared/services/jobs.service';
 import { Job } from 'src/app/shared/models/job.model';
 import { PointOfSale } from 'src/app/shared/models/pointOfSale.model';
+import { Employee } from 'src/app/shared/models/employee.model';
+import { EmployeesService } from 'src/app/shared/services/employees.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-new-employee',
@@ -15,7 +18,9 @@ export class NewEmployeeComponent implements OnInit {
   jobs: Job[] = [];
   pointsOfSale: PointOfSale[] = [];
   constructor(
+    private employeesService: EmployeesService,
     private fb: FormBuilder,
+    private location: Location,
     private pointsOfSaleService: PointsOfSaleService,
     private jobsService: JobsService
   ) {}
@@ -51,6 +56,21 @@ export class NewEmployeeComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.employeeForm.value);
+    const newEmployee = {
+      name: this.employeeForm.value.name,
+      document: this.employeeForm.value.document,
+      phone: this.employeeForm.value.phone,
+      address: this.employeeForm.value.address,
+      email: this.employeeForm.value.email,
+      jobId: Number(this.employeeForm.value.jobId),
+      posId: Number(this.employeeForm.value.posId),
+    };
+    this.employeesService.createEmployee(newEmployee).subscribe((employee) => {
+      console.log(employee);
+    });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }
