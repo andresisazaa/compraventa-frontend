@@ -8,8 +8,10 @@ import {
   FormControl,
 } from '@angular/forms';
 import { ProvidersService } from 'src/app/shared/services/providers.service';
+import { PurchasesService } from 'src/app/shared/services/purchases.service';
 import { ModelsService } from 'src/app/shared/services/models.service';
 import { Model } from 'src/app/shared/models/model.model';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-new-purchase',
   templateUrl: './new-purchase.component.html',
@@ -22,7 +24,9 @@ export class NewPurchaseComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private providersService: ProvidersService,
-    private modelsService: ModelsService
+    private modelsService: ModelsService,
+    private purchaseService: PurchasesService,
+    
   ) {}
 
   ngOnInit(): void {
@@ -76,6 +80,34 @@ export class NewPurchaseComponent implements OnInit {
     return this.purchaseForm.get('machines')['controls'] as FormGroup;
   }
   onSubmit() {
-    console.log(this.purchaseForm.value);
+
+    if (this.purchaseForm.invalid) {
+      return;
+    }
+
+    const purchaseData = {
+      providerId: Number(this.purchaseForm.value.providerId),
+      machines: this.purchaseForm.value.machines.map(machine => ({
+        ...machine,
+        modelId: Number(machine.modelId),
+        purchaseValue: machine.price
+      }))
+    };
+
+    this.purchaseService.createPurchase(purchaseData).subscribe((purchase) => {
+      Swal.hideLoading();
+      Swal.fire({
+        icon: 'success',
+        text: `Compra ${purchase['id']} creada correctamente`,
+      });
+    },
+    (error) => {
+      Swal.hideLoading();
+      Swal.fire({
+        icon: 'error',
+        title: '¡Ocurrió un error!',
+        text: `No se pudo crear la compra ${error.message}`,
+      });
+    });
   }
 }
