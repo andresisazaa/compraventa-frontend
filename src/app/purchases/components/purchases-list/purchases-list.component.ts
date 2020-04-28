@@ -17,13 +17,11 @@ export class PurchasesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPurchases();
-    this.purchasesService.getPurchaseById(1).subscribe(console.log);
   }
 
   getPurchases() {
     this.purchasesService.getPurchases().subscribe((purchases) => {
       this.purchases = purchases;
-      console.log(this.purchases);
     });
   }
 

@@ -7,6 +7,7 @@ import { PointOfSale } from 'src/app/shared/models/pointOfSale.model';
 import { Employee } from 'src/app/shared/models/employee.model';
 import { EmployeesService } from 'src/app/shared/services/employees.service';
 import { Location } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-employee',
@@ -56,6 +57,9 @@ export class NewEmployeeComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.employeeForm.invalid) {
+      return;
+    }
     const newEmployee = {
       name: this.employeeForm.value.name,
       document: this.employeeForm.value.document,
@@ -65,9 +69,23 @@ export class NewEmployeeComponent implements OnInit {
       jobId: Number(this.employeeForm.value.jobId),
       posId: Number(this.employeeForm.value.posId),
     };
-    this.employeesService.createEmployee(newEmployee).subscribe((employee) => {
-      console.log(employee);
-    });
+    this.employeesService.createEmployee(newEmployee).subscribe(
+      (employee) => {
+        Swal.hideLoading();
+        Swal.fire({
+          icon: 'success',
+          text: `Empleado ${employee['name']} creado correctamente`,
+        });
+      },
+      (error) => {
+        Swal.hideLoading();
+        Swal.fire({
+          icon: 'error',
+          title: '¡Ocurrió un error!',
+          text: `No se pudo crear el empleado`,
+        });
+      }
+    );
   }
 
   goBack() {

@@ -19,7 +19,6 @@ export class PurchaseComponent implements OnInit {
       const id = params.id;
       this.purchasesService.getPurchaseById(id).subscribe((purchase) => {
         this.purchase = purchase;
-        console.log(this.purchase);
       });
     });
   }

@@ -7,6 +7,7 @@ import { JobsService } from 'src/app/shared/services/jobs.service';
 import { Job } from 'src/app/shared/models/job.model';
 import { PointOfSale } from 'src/app/shared/models/pointOfSale.model';
 import { forkJoin, Subscription, Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-employee',
@@ -81,16 +82,32 @@ export class EmployeeComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.employeeForm.invalid) {
+      return;
+    }
     const newEmployee = {
       phone: this.employeeForm.value.phone,
       address: this.employeeForm.value.address,
       jobId: Number(this.employeeForm.value.jobId),
       posId: Number(this.employeeForm.value.posId),
     };
-    this.employeesService
-      .updateEmployee(this.id, newEmployee)
-      .subscribe((employee) => {
-        console.log(employee);
-      });
+    Swal.showLoading();
+    this.employeesService.updateEmployee(this.id, newEmployee).subscribe(
+      (employee) => {
+        Swal.hideLoading();
+        Swal.fire({
+          icon: 'info',
+          text: `${employee['message']}`,
+        });
+      },
+      (error) => {
+        Swal.hideLoading();
+        Swal.fire({
+          icon: 'error',
+          title: '¡Ocurrió un error!',
+          text: `${error.message}`,
+        });
+      }
+    );
   }
 }
