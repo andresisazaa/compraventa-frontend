@@ -20,4 +20,8 @@ export class PurchasesService {
   getPurchaseById(id: number) {
     return this.http.get(`${this.PURCHASES_URL}/${id}`);
   }
+
+  createPurchase(purchaseInfo) {
+    return this.http.post(this.PURCHASES_URL, purchaseInfo);
+  }
 }
