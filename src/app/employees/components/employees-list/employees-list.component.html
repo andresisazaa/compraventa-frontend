@@ -5,6 +5,11 @@
   </div>
 </div>
 <div class="row">
+  <div class="col mb-4">
+    <a routerLink="new" class="btn btn-primary">Agregar Nuevo Empleado</a>
+  </div>
+</div>
+<div class="row">
   <div class="col-md-8 mx-auto">
     <div class="table-wrapper">
       <app-loading [loading]="loadingEmployees"></app-loading>
@@ -23,8 +28,9 @@
         <tbody>
           <tr
             *ngFor="let employee of employees"
-            (click)="viewEmployeeDetails(employee.id)"
+            (click)="viewEmployeeDetails(employee.id)" app-employee [id] = "employee.id"
           >
+
             <td>{{ employee.id }}</td>
             <td>{{ employee.name }}</td>
             <td>{{ employee.document }}</td>
