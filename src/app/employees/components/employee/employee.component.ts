@@ -22,7 +22,7 @@ export class EmployeeComponent implements OnInit {
   subscription: Subscription;
   constructor(
     private route: ActivatedRoute,
-    private emplyeesService: EmployeesService,
+    private employeesService: EmployeesService,
     private fb: FormBuilder,
     private pointsOfSaleService: PointsOfSaleService,
     private jobsService: JobsService
@@ -43,7 +43,7 @@ export class EmployeeComponent implements OnInit {
   getFormData() {
     const jobs$ = this.jobsService.getJobs();
     const pos$ = this.pointsOfSaleService.getPointsOfSale();
-    const employee$ = this.emplyeesService.getEmployeeById(this.id);
+    const employee$ = this.employeesService.getEmployeeById(this.id);
     return forkJoin([employee$, jobs$, pos$]);
   }
 
@@ -81,6 +81,13 @@ export class EmployeeComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.employeeForm.value);
+    const newEmployee = {
+      phone: this.employeeForm.value.phone,
+      address: this.employeeForm.value.address,
+      jobId: Number(this.employeeForm.value.jobId) ,
+      posId: Number(this.employeeForm.value.posId)};
+    this.employeesService.updateEmployee(this.id, newEmployee).subscribe((employee) =>{
+      console.log(employee);
+    });
   }
 }
