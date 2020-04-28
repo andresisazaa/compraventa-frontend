@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -10,11 +12,17 @@ export class EmployeesService {
 
   constructor(private http: HttpClient) {}
 
-  getEmployees() {
-    return this.http.get(this.EMPLOYEES_URL);
+  getEmployees(): Observable<[]> {
+    return this.http
+      .get(this.EMPLOYEES_URL)
+      .pipe(map((response: []) => response));
   }
 
   getEmployeeById(id: number) {
     return this.http.get(`${this.EMPLOYEES_URL}/${id}`);
+  }
+
+  createEmployee(employeeData) {
+    return this.http.post(this.EMPLOYEES_URL, employeeData);
   }
 }
