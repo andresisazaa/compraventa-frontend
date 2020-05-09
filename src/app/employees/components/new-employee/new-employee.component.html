@@ -1,0 +1,62 @@
+<form
+  [formGroup]="employeeForm"
+  (ngSubmit)="onSubmit()"
+  class="mx-auto"
+>
+  <h3 class="text-center">Agrega un nuevo Empleado</h3>
+  <div class="row">
+    <div class="col-md-5 offset-md-1">
+      <div class="form-group">
+        <label>Nombre</label>
+        <input formControlName="name" type="text" class="form-control" placeholder="Ingrese nombre"/>
+        <small class="form-text text-muted">Required</small>
+      </div>
+      <div class="form-group">
+        <label>Documento</label>
+        <input formControlName="document" class="form-control" placeholder="Ingrese documento"/>
+      </div>
+      <div class="form-group">
+        <label>Telefono</label>
+        <input type="number" formControlName="phone" class="form-control" placeholder="Ingrese número telefónico"/>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" formControlName="email" class="form-control" placeholder="Ingrese Email"/>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <label>Dirección</label>
+        <textarea
+          formControlName="address"
+          class="form-control"
+          rows="2"
+          placeholder="Ingrese dirección de residencia"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label>Cargo</label>
+        <select class="custom-select" formControlName="jobId">
+          <option [value]="null" selected>Open this select menu</option>
+          <option *ngFor="let job of jobs" [value]="job.id">{{
+            job.jobName
+          }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Punto de venta</label>
+        <select class="custom-select" formControlName="posId">
+          <option [value]="null" selected>Open this select menu</option>
+          <option *ngFor="let pos of pointsOfSale" [value]="pos.id">{{
+            pos.posName
+          }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary btn-block w-50 mx-auto" >
+      Agregar
+    </button>
+  </div>
+</form>

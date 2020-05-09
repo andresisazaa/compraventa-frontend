@@ -1,0 +1,53 @@
+<section class="login-section">
+  <div class="x-row">
+    <div class="x-col-100">
+      <form
+        class="login__form animated bounceInLeft fast"
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <h1 class="login__form__title">ConfectApp</h1>
+        <div class="login__form__item form-group">
+          <label class="form__item__label">Usuario:</label>
+          <input
+            type="email"
+            class="form__item__input"
+            formControlName="email"
+            placeholder="john.doe@example.com"
+          />
+          <div
+            *ngIf="email.errors && email.errors.email && email.dirty"
+            class="form__item__validator"
+          >
+            <small>¡Email no válido!</small>
+          </div>
+        </div>
+        <br>
+        <div class="login__form__item form-group">
+          <label class="form__item__label">Contraseña:</label>
+          <input
+            type="password"
+            class="form__item__input"
+            formControlName="password"
+            placeholder="********"
+          />
+        </div>
+        <div class="login__form__item">
+          <button
+            class="form__button__submit"
+            type="submit"
+            [disabled]="loginForm.invalid || submitted"
+          >
+            Iniciar sesión
+          </button>
+        </div>
+        <div class="error__message-container">
+          <i *ngIf="submitted" class="fa fa-circle-o-notch fa-spin"></i>
+          <p *ngIf="errorMessage" class="error__message animated fadeIn fast">
+            {{ errorMessage }}
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

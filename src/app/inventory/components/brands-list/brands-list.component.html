@@ -1,0 +1,21 @@
+<a routerLink="new" class="btn btn-primary">Agregar Marca</a>
+<div class="d-flex justify-content-center flex-wrap">
+  <div *ngFor="let brand of brands" class="card m-2" style="width: 250px;">
+    <img
+      *ngIf="brand.brandLogo"
+      [src]="brand.brandLogo"
+      class="card-img-top card__image"
+      [alt]="brand.brandName"
+    />
+    <img
+      *ngIf="!brand.brandLogo"
+      src="../../../../assets/images/no-image.png"
+      class="card-img-top card__image"
+      alt="No image available"
+    />
+    <hr />
+    <div class="card-body">
+      <h5 class="card-title">{{ brand.brandName }}</h5>
+    </div>
+  </div>
+</div>

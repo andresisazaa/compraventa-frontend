@@ -28,7 +28,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/scss/styles.scss",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
@@ -123,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "compraventa-frontend"
+    }
+  },
+  "defaultProject": "compraventa-frontend",
+  "cli": {
+    "analytics": "410a90b3-d84a-445d-9b91-0cb1a5a3d5ac"
+  }
 }
