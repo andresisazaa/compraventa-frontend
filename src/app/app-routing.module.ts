@@ -1,39 +1,39 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './shared/guards/auth.guard';
-import { BaseComponent } from './components/base/base.component';
+import { AuthGuard } from './core/guards/auth.guard';
+import { HomeComponent } from './shared/components/home/home.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: BaseComponent,
+    component: HomeComponent,
     canActivate: [AuthGuard],
     children: [
       {
         path: 'inventario',
         loadChildren: () =>
-          import('./inventory/inventory.module').then((m) => m.InventoryModule),
+          import('./modules/inventory/inventory.module').then((m) => m.InventoryModule),
       },
       {
         path: 'empleados',
         loadChildren: () =>
-          import('./employees/employees.module').then((m) => m.EmployeesModule),
+          import('./modules/employees/employees.module').then((m) => m.EmployeesModule),
       },
       {
         path: 'ventas',
         loadChildren: () =>
-          import('./sales/sales.module').then((m) => m.SalesModule),
+          import('./modules/sales/sales.module').then((m) => m.SalesModule),
       },
       {
         path: 'compras',
         loadChildren: () =>
-          import('./purchases/purchases.module').then((m) => m.PurchasesModule),
+          import('./modules/purchases/purchases.module').then((m) => m.PurchasesModule),
       },
     ],
   },
   {
     path: 'login',
-    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+    loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule),
   },
   { path: '**', pathMatch: 'full', redirectTo: 'login' },
 ];

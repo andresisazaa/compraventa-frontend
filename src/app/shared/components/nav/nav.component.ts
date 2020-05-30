@@ -1,18 +1,17 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/authentication/auth.service';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss']
+  styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
-
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
   @Output() navbarChanges: EventEmitter<boolean> = new EventEmitter();
   open = true;
-  ngOnInit(): void { }
+  ngOnInit(): void {}
   toggleSidebar() {
     this.open = !this.open;
     this.navbarChanges.emit(this.open);
@@ -22,5 +21,4 @@ export class NavComponent implements OnInit {
     this.authService.logout();
     this.router.navigateByUrl('/auth/login');
   }
-
 }
