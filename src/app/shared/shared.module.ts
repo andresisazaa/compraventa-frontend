@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { LoadingComponent } from './components/loading/loading.component';
 import { BackButtonComponent } from './components/back-button/back-button.component';
 import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
     LoadingComponent,
     BackButtonComponent,
     HomeComponent,
+    NotFoundComponent,
   ],
   imports: [CommonModule, RouterModule],
   exports: [NavComponent, LoadingComponent, BackButtonComponent, HomeComponent],

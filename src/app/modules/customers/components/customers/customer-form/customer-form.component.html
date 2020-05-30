@@ -1,0 +1,25 @@
+<form [formGroup]="customerForm" (ngSubmit)="submit()">
+  <div class="form-group">
+    <label>Nombre</label>
+    <input [formControl]="name" type="text" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Documento</label>
+    <input [formControl]="document" type="number" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Teléfono</label>
+    <input [formControl]="cellphone" type="number" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input [formControl]="email" type="email" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Dirección</label>
+    <input [formControl]="address" type="text" class="form-control" />
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit">Registrar cliente</button>
+  </div>
+</form>
