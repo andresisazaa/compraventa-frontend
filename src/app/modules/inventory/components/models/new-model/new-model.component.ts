@@ -12,8 +12,7 @@ import { BrandsService } from 'src/app/core/services/brands.service';
 import { ModelsService } from 'src/app/core/services/models.service';
 @Component({
   selector: 'app-new-model',
-  templateUrl: './new-model.component.html',
-  styleUrls: ['./new-model.component.scss'],
+  templateUrl: './new-model.component.html'
 })
 export class NewModelComponent implements OnInit {
   modelForm: FormGroup;
@@ -22,7 +21,7 @@ export class NewModelComponent implements OnInit {
     private fb: FormBuilder,
     private brandsService: BrandsService,
     private modelsService: ModelsService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getFormData().subscribe((brands) => {

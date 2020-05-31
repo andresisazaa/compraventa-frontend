@@ -3,11 +3,10 @@ import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-back-button',
-  templateUrl: './back-button.component.html',
-  styleUrls: ['./back-button.component.scss'],
+  templateUrl: './back-button.component.html'
 })
 export class BackButtonComponent {
-  constructor(private location: Location) {}
+  constructor(private location: Location) { }
 
   goBack() {
     this.location.back();

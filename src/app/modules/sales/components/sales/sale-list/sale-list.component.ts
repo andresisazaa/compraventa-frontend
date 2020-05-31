@@ -5,8 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sale-list',
-  templateUrl: './sale-list.component.html',
-  styleUrls: ['./sale-list.component.scss']
+  templateUrl: './sale-list.component.html'
 })
 export class SaleListComponent implements OnInit {
   sales: Sale[] = [];
@@ -28,10 +27,8 @@ export class SaleListComponent implements OnInit {
         this.loadingSales = false;
       }, error => {
         this.loadingSales = false;
-        console.log(error);
       });
   }
-
 
   viewSaleDetail(id: number) {
     this.router.navigate([id], { relativeTo: this.route });

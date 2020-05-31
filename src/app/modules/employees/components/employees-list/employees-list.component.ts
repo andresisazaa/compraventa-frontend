@@ -4,8 +4,7 @@ import { EmployeesService } from 'src/app/core/services/employees.service';
 
 @Component({
   selector: 'app-employees-list',
-  templateUrl: './employees-list.component.html',
-  styleUrls: ['./employees-list.component.scss'],
+  templateUrl: './employees-list.component.html'
 })
 export class EmployeesListComponent implements OnInit {
   employees = [];
@@ -14,7 +13,7 @@ export class EmployeesListComponent implements OnInit {
     private employeesService: EmployeesService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getEmployees();

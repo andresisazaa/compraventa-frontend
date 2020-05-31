@@ -9,12 +9,11 @@ import { Provider } from 'src/app/shared/models/provider.model';
 
 @Component({
   selector: 'app-provider-form',
-  templateUrl: './provider-form.component.html',
-  styleUrls: ['./provider-form.component.scss'],
+  templateUrl: './provider-form.component.html'
 })
 export class ProviderFormComponent implements OnInit {
   providerForm: FormGroup;
-  
+
   @Output() submitProvider: EventEmitter<Provider>;
   @Input() provider?: Provider;
   @Input() submitMessage: string;
@@ -29,7 +28,6 @@ export class ProviderFormComponent implements OnInit {
   }
 
   submit(): void {
-    console.log(this.providerForm);
     if (this.providerForm.invalid) {
       return;
     }
@@ -57,46 +55,46 @@ export class ProviderFormComponent implements OnInit {
         ],
       ],
       phoneNumber: [
-        this.provider ? this.provider.phoneNumber : null, 
+        this.provider ? this.provider.phoneNumber : null,
         [
-          Validators.maxLength(10), 
+          Validators.maxLength(10),
           Validators.minLength(8)
         ]
       ],
       email: [
-        this.provider ? this.provider.email : null, 
+        this.provider ? this.provider.email : null,
         [
           Validators.required,
           Validators.email
         ]
       ],
       address: [
-        this.provider ? this.provider.address : null, 
+        this.provider ? this.provider.address : null,
         [
-          Validators.maxLength(60), 
+          Validators.maxLength(60),
           Validators.minLength(10)
         ]
       ]
     });
   }
 
-  get businessName (): AbstractControl {
+  get businessName(): AbstractControl {
     return this.providerForm.get('businessName');
   }
 
-  get nit (): AbstractControl {
+  get nit(): AbstractControl {
     return this.providerForm.get('nit');
   }
 
-  get email (): AbstractControl {
+  get email(): AbstractControl {
     return this.providerForm.get('email');
   }
 
-  get phoneNumber (): AbstractControl {
+  get phoneNumber(): AbstractControl {
     return this.providerForm.get('phoneNumber');
   }
 
-  get address (): AbstractControl {
+  get address(): AbstractControl {
     return this.providerForm.get('address');
   }
 }

@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-purchases',
-  templateUrl: './purchases.component.html',
-  styleUrls: ['./purchases.component.scss']
+  templateUrl: './purchases.component.html'
 })
 export class PurchasesComponent implements OnInit {
 

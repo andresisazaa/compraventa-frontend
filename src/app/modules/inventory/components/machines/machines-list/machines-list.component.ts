@@ -4,8 +4,7 @@ import { MachinesService } from 'src/app/core/services/machines.service';
 
 @Component({
   selector: 'app-machines-list',
-  templateUrl: './machines-list.component.html',
-  styleUrls: ['./machines-list.component.scss'],
+  templateUrl: './machines-list.component.html'
 })
 export class MachinesListComponent implements OnInit {
   machines = [];
@@ -14,7 +13,7 @@ export class MachinesListComponent implements OnInit {
     private machinesService: MachinesService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getMachines();

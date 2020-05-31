@@ -5,8 +5,7 @@ import { Sale } from 'src/app/shared/models/sale.model';
 
 @Component({
   selector: 'app-sale',
-  templateUrl: './sale.component.html',
-  styleUrls: ['./sale.component.scss']
+  templateUrl: './sale.component.html'
 })
 export class SaleComponent implements OnInit {
   sale: Sale;
@@ -25,9 +24,7 @@ export class SaleComponent implements OnInit {
     this.salesService.getSaleById(id)
       .subscribe(sale => {
         this.sale = sale;
-        console.log(this.sale);
       });
   }
 
 }
- 

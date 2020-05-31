@@ -11,8 +11,7 @@ import { EmployeesService } from 'src/app/core/services/employees.service';
 
 @Component({
   selector: 'app-new-employee',
-  templateUrl: './new-employee.component.html',
-  styleUrls: ['./new-employee.component.scss'],
+  templateUrl: './new-employee.component.html'
 })
 export class NewEmployeeComponent implements OnInit {
   employeeForm: FormGroup;
@@ -24,7 +23,7 @@ export class NewEmployeeComponent implements OnInit {
     private location: Location,
     private pointsOfSaleService: PointsOfSaleService,
     private jobsService: JobsService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.employeeForm = this.createEmployeeForm();

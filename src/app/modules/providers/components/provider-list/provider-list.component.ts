@@ -5,17 +5,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-provider-list',
-  templateUrl: './provider-list.component.html',
-  styleUrls: ['./provider-list.component.scss']
+  templateUrl: './provider-list.component.html'
 })
 export class ProviderListComponent implements OnInit {
-  
   providers: Provider[] = [];
   loadingProviders: boolean;
 
-  constructor(private providerService: ProvidersService,
-     private router: Router,
-     private route: ActivatedRoute) { }
+  constructor(
+    private providerService: ProvidersService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getProviders();
@@ -24,11 +23,9 @@ export class ProviderListComponent implements OnInit {
   getProviders(): void {
     this.loadingProviders = true;
     this.providerService.getProviders().subscribe(providers => {
-      console.log(providers);
       this.providers = providers;
       this.loadingProviders = false;
     }, err => {
-      console.log(err);
       this.loadingProviders = false;
     });
   }

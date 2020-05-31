@@ -8,10 +8,10 @@ import { AuthService } from 'src/app/core/authentication/auth.service';
   styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
   @Output() navbarChanges: EventEmitter<boolean> = new EventEmitter();
   open = true;
-  ngOnInit(): void {}
+  ngOnInit(): void { }
   toggleSidebar() {
     this.open = !this.open;
     this.navbarChanges.emit(this.open);

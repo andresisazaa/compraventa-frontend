@@ -12,8 +12,7 @@ import { JobsService } from 'src/app/core/services/jobs.service';
 
 @Component({
   selector: 'app-employee',
-  templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.scss'],
+  templateUrl: './employee.component.html'
 })
 export class EmployeeComponent implements OnInit {
   employeeForm: FormGroup;
@@ -28,7 +27,7 @@ export class EmployeeComponent implements OnInit {
     private fb: FormBuilder,
     private pointsOfSaleService: PointsOfSaleService,
     private jobsService: JobsService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {

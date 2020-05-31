@@ -4,13 +4,12 @@ import { ModelsService } from 'src/app/core/services/models.service';
 
 @Component({
   selector: 'app-models-list',
-  templateUrl: './models-list.component.html',
-  styleUrls: ['./models-list.component.scss'],
+  templateUrl: './models-list.component.html'
 })
 export class ModelsListComponent implements OnInit {
   loadingModels: boolean;
   models: Model[] = [];
-  constructor(private modelsService: ModelsService) {}
+  constructor(private modelsService: ModelsService) { }
 
   ngOnInit(): void {
     this.getModels();

@@ -4,12 +4,11 @@ import { BrandsService } from 'src/app/core/services/brands.service';
 
 @Component({
   selector: 'app-brands-list',
-  templateUrl: './brands-list.component.html',
-  styleUrls: ['./brands-list.component.scss'],
+  templateUrl: './brands-list.component.html'
 })
 export class BrandsListComponent implements OnInit {
   brands: Brand[] = [];
-  constructor(private brandsService: BrandsService) {}
+  constructor(private brandsService: BrandsService) { }
 
   ngOnInit(): void {
     this.brandsService.getBrands().subscribe((brands: Brand[]) => {
