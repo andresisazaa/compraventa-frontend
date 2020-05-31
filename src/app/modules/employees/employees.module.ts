@@ -4,7 +4,6 @@ import { EmployeesComponent } from './components/employees/employees.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { NewEmployeeComponent } from './components/new-employee/new-employee.component';
 import { EmployeesRoutingModule } from './employees.routes';
-import { EmployeeMenuComponent } from './components/employee-menu/employee-menu.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { EmployeesListComponent } from './components/employees-list/employees-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -14,8 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     EmployeesComponent,
     EmployeeComponent,
     NewEmployeeComponent,
-    EmployeeMenuComponent,
-    EmployeesListComponent,
+    EmployeesListComponent
   ],
   imports: [
     CommonModule,
@@ -24,4 +22,4 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
   ],
 })
-export class EmployeesModule {}
+export class EmployeesModule { }

@@ -1,10 +1,4 @@
 <div class="row">
-  <div class="col">
-    <h4 class="font-weight-bolder">Listado de Máquinas</h4>
-    <h5>Seleccione una para ver más detalles</h5>
-  </div>
-</div>
-<div class="row">
   <div class="col-md-8 mx-auto">
     <div class="table-wrapper">
       <app-loading [loading]="loadingMachines"></app-loading>
@@ -35,8 +29,8 @@
                 [ngClass]="
                   machine.type === 'nueva' ? 'badge-info' : 'badge-warning'
                 "
-                >{{ machine.type }}</span
-              >
+                >{{ machine.type }}
+              </span>
             </td>
             <td>
               {{
@@ -44,9 +38,9 @@
               }}
             </td>
             <td>
-              <span class="badge badge-success">{{
-                machine.statuses[machine.statuses.length - 1].name
-              }}</span>
+              <span class="badge badge-success">
+                {{ machine.statuses[machine.statuses.length - 1].name }}
+              </span>
             </td>
           </tr>
         </tbody>

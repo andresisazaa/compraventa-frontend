@@ -6,12 +6,12 @@
   width: 200px;
   left: 0;
   top: 0;
-  background-color: $primary-blue;
+  background-color: #013542;
   cursor: pointer;
   z-index: 1;
   transform: translateX(-100%);
   padding-top: 1rem;
-  transition: 0.25s linear;
+  transition: 0.3s linear;
 }
 
 .nav--active {
@@ -24,7 +24,7 @@
 
 .nav__link {
   width: calc(192px - 0.5rem);
-  padding: 0.5rem;
+  padding: 0.3rem;
   text-decoration: none;
   font-size: 1.2rem;
   color: white;
@@ -36,7 +36,7 @@
 .nav__link__icon {
   margin: 0 0.5rem;
   font-size: 1.5rem;
-  color: $primary-orange;
+  color: white;
 }
 
 .nav__profile-container {
@@ -70,19 +70,34 @@
 
 .nav__list__item:hover,
 .nav__list__item--active {
-  background-color: $primary-green;
+  background-color: #086678;
+}
+
+.logout__button {
+  padding: 0.5rem;
+  width: calc(192px - 0.5rem);
+  text-decoration: none;
+  margin: 0.5rem auto;
+  border: none;
+  font-size: 1.2rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
 }
 
 .nav__button {
-  position: absolute;
+  position: fixed;
+  z-index: 1000;
   left: 200px;
   top: 0;
-  width: 50px;
+  width: 35px;
+  height: 35px;
   color: $secundary-blue;
-  background-color: whitesmoke;
+  background-color: #c1c1c1;
   text-decoration: none;
-  font-size: 2rem;
-  transition: 0.25s ease-in-out;
+  transition: 0.3s linear;
+  font-size: 1.5rem;
   border: none;
   outline: none;
   vertical-align: middle;

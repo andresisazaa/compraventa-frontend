@@ -1,0 +1,23 @@
+.header-section {
+  background-color: #086678;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.header__title {
+  color: white;
+  font-weight: bolder;
+  display: inline-block;
+  margin-left: 2.5rem;
+}
+
+.header__title > span {
+  border-bottom: 0.25rem dashed #013542;
+}
+
+.header__description {
+  color: white;
+  font-weight: bold;
+  padding-left: 2.5rem;
+}

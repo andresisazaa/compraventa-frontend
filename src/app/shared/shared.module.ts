@@ -6,6 +6,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { BackButtonComponent } from './components/back-button/back-button.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -14,8 +15,15 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     BackButtonComponent,
     HomeComponent,
     NotFoundComponent,
+    HeaderComponent,
   ],
   imports: [CommonModule, RouterModule],
-  exports: [NavComponent, LoadingComponent, BackButtonComponent, HomeComponent],
+  exports: [
+    NavComponent,
+    LoadingComponent,
+    BackButtonComponent,
+    HomeComponent,
+    HeaderComponent
+  ],
 })
-export class SharedModule {}
+export class SharedModule { }
