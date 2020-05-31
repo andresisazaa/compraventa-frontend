@@ -97,7 +97,7 @@ export class NewSaleComponent implements OnInit {
         Swal.fire({
           icon: 'success',
           title: '¡Venta exitosa!',
-          text: `¡Venta con ${sale.id} creada correctamente!`,
+          text: `¡Venta con id ${sale.id} creada correctamente!`,
           onClose: () => { this.router.navigateByUrl('/ventas'); }
         });
       }, error => {
