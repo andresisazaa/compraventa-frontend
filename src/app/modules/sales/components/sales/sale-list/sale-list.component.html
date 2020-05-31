@@ -1,1 +1,34 @@
-<p>sale-list works!</p>
+<div class="row">
+  <div class="col mb-4">
+    <a routerLink="new" class="btn btn-primary">Crear Venta</a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 mx-auto">
+    <div class="table-wrapper">
+      <app-loading [loading]="loadingSales"></app-loading>
+      <table
+        class="table table-responsive-sm table-hover table-striped table-sm animated fadeIn"
+      >
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Empleado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr (click)="viewSaleDetail(sale.id)" *ngFor="let sale of sales">
+            <td>{{ sale.id }}</td>
+            <td>{{ sale.saleValue }}</td>
+            <td>{{ sale.date }}</td>
+            <td>{{ sale.customerName }}</td>
+            <td>{{ sale.employeeName }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Customer } from 'src/app/shared/models/customer.model';
-import { CustomersService } from 'src/app/core/services/customers.service';
 
 @Component({
   selector: 'app-customer-form',
@@ -9,8 +8,11 @@ import { CustomersService } from 'src/app/core/services/customers.service';
   styleUrls: ['./customer-form.component.scss']
 })
 export class CustomerFormComponent implements OnInit {
+  @Output() submitCustomer: EventEmitter<Customer>;
   customerForm: FormGroup;
-  constructor(private fb: FormBuilder, private customersService: CustomersService) { }
+  constructor(private fb: FormBuilder) {
+    this.submitCustomer = new EventEmitter<Customer>();
+  }
 
   ngOnInit(): void {
     this.customerForm = this.createCustomerForm();
@@ -48,20 +50,11 @@ export class CustomerFormComponent implements OnInit {
   }
 
 
-  submit() {
-    console.log(this.customerForm);
-    console.log(this.customerForm.value);
-    console.log('VALID', this.customerForm.valid);
+  submit(): void {
     if (this.customerForm.invalid) {
       return;
     }
-
     const customer: Customer = this.customerForm.value;
-    this.customersService.createCustomer(customer)
-      .subscribe(customerCreated => {
-        console.log(customerCreated);
-      });
-    console.log('CUSTOMER', customer, customer.name);
-
+    this.submitCustomer.emit(customer);
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 export class MachinesService {
   private MACHINES_URL = `${environment.backendUrl}/machines`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getMachines(): Observable<[]> {
     return this.http
@@ -20,5 +20,12 @@ export class MachinesService {
 
   getMachineById(id: number) {
     return this.http.get(`${this.MACHINES_URL}/${id}`);
+  }
+
+  getAvailableMachines(): Observable<[]> {
+    const params = new HttpParams()
+      .set('status', '2');
+    return this.http.get(this.MACHINES_URL, { params })
+      .pipe(map((response: []) => response));
   }
 }

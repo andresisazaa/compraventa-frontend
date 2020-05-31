@@ -1,9 +1,10 @@
 import { Machine } from './machine.model';
-import { Customer } from './customer.model';
 
-export interface Purchase {
+export interface Sale {
   id?: number;
-  machines: Machine[];
-  customer: Customer;
-  value: number;
+  saleValue: number;
+  date: string;
+  customerName: string;
+  employeeName: string;
+  machines?: Machine[];
 }
