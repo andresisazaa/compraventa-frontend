@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col mb-4">
+    <a routerLink="new" class="btn btn-primary">Agregar Proveedor</a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 mx-auto">
+    <div class="table-wrapper">
+      <app-loading [loading]="loadingProviders"></app-loading>
+      <table
+        class="table table-responsive-sm table-hover table-striped table-sm animated fadeIn"
+      >
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Razon social</th>
+            <th scope="col">Nit</th>
+            <th scope="col">Email</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Dirección</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let provider of providers" (click)="viewProviderDetails(provider.id)">
+            <td>{{ provider.businessName }}</td>
+            <td>{{ provider.nit }}</td>
+            <td>{{ provider.email }}</td>
+            <td>{{ provider.phoneNumber }}</td>
+            <td>{{ provider.address }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
