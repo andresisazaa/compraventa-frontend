@@ -4,8 +4,7 @@ import { PurchasesService } from 'src/app/core/services/purchases.service';
 
 @Component({
   selector: 'app-purchases-list',
-  templateUrl: './purchases-list.component.html',
-  styleUrls: ['./purchases-list.component.scss'],
+  templateUrl: './purchases-list.component.html'
 })
 export class PurchasesListComponent implements OnInit {
   purchases = [];
@@ -13,7 +12,7 @@ export class PurchasesListComponent implements OnInit {
     private purchasesService: PurchasesService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getPurchases();

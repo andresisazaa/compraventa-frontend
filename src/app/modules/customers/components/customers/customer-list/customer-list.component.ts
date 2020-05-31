@@ -5,8 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-customer-list',
-  templateUrl: './customer-list.component.html',
-  styleUrls: ['./customer-list.component.scss']
+  templateUrl: './customer-list.component.html'
 })
 export class CustomerListComponent implements OnInit {
   customers: Customer[] = [];
@@ -24,7 +23,6 @@ export class CustomerListComponent implements OnInit {
       .subscribe(customers => {
         this.customers = customers;
         this.loadingCustomers = false;
-        console.log(this.customers);
       });
   }
 

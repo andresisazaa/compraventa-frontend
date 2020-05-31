@@ -8,8 +8,7 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-new-sale',
-  templateUrl: './new-sale.component.html',
-  styleUrls: ['./new-sale.component.scss']
+  templateUrl: './new-sale.component.html'
 })
 export class NewSaleComponent implements OnInit {
   saleForm: FormGroup;
@@ -38,7 +37,6 @@ export class NewSaleComponent implements OnInit {
           machine,
           available: true
         }));
-        console.log(this.availableMachines);
       });
   }
 
@@ -67,7 +65,6 @@ export class NewSaleComponent implements OnInit {
 
   addItem(): void {
     this.machines = this.saleForm.get('machines') as FormArray;
-    console.log(this.machines.value);
     // this.availableMachines = this.availableMachines.filter(m =)
     this.machines.push(this.createItem());
   }

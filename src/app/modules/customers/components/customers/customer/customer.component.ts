@@ -6,8 +6,7 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-customer',
-  templateUrl: './customer.component.html',
-  styleUrls: ['./customer.component.scss']
+  templateUrl: './customer.component.html'
 })
 export class CustomerComponent implements OnInit {
 

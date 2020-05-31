@@ -15,8 +15,7 @@ import { ModelsService } from 'src/app/core/services/models.service';
 import { PurchasesService } from 'src/app/core/services/purchases.service';
 @Component({
   selector: 'app-new-purchase',
-  templateUrl: './new-purchase.component.html',
-  styleUrls: ['./new-purchase.component.scss'],
+  templateUrl: './new-purchase.component.html'
 })
 export class NewPurchaseComponent implements OnInit {
   purchaseForm: FormGroup;
@@ -27,7 +26,7 @@ export class NewPurchaseComponent implements OnInit {
     private providersService: ProvidersService,
     private modelsService: ModelsService,
     private purchaseService: PurchasesService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getModels();
@@ -35,7 +34,6 @@ export class NewPurchaseComponent implements OnInit {
       providerId: [null, Validators.required],
       machines: this.fb.array([this.createItem()]),
     });
-    console.log(this.purchaseForm);
   }
 
   getModels(): void {

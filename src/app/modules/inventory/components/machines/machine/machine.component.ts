@@ -4,15 +4,14 @@ import { MachinesService } from 'src/app/core/services/machines.service';
 
 @Component({
   selector: 'app-machine',
-  templateUrl: './machine.component.html',
-  styleUrls: ['./machine.component.scss'],
+  templateUrl: './machine.component.html'
 })
 export class MachineComponent implements OnInit {
   machine: any;
   constructor(
     private route: ActivatedRoute,
     private machinesService: MachinesService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {

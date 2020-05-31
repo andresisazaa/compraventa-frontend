@@ -4,15 +4,14 @@ import { PurchasesService } from 'src/app/core/services/purchases.service';
 
 @Component({
   selector: 'app-purchase',
-  templateUrl: './purchase.component.html',
-  styleUrls: ['./purchase.component.scss'],
+  templateUrl: './purchase.component.html'
 })
 export class PurchaseComponent implements OnInit {
   purchase;
   constructor(
     private purchasesService: PurchasesService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {

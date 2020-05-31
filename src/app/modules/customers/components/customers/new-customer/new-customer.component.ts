@@ -6,8 +6,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-customer',
-  templateUrl: './new-customer.component.html',
-  styleUrls: ['./new-customer.component.scss']
+  templateUrl: './new-customer.component.html'
 })
 export class NewCustomerComponent implements OnInit {
 

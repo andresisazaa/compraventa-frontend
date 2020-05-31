@@ -4,8 +4,7 @@ import { Customer } from 'src/app/shared/models/customer.model';
 
 @Component({
   selector: 'app-customer-form',
-  templateUrl: './customer-form.component.html',
-  styleUrls: ['./customer-form.component.scss']
+  templateUrl: './customer-form.component.html'
 })
 export class CustomerFormComponent implements OnInit {
   @Output() submitCustomer: EventEmitter<Customer>;
