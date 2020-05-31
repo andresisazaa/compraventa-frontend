@@ -24,4 +24,16 @@ export class ProvidersService {
       .get(`${this.PROVIDERS_URL}/${id}`)
       .pipe(map((response: Provider) => response));
   }
+
+  createProvider (provider: Provider): Observable<Provider> {
+    return this.http
+      .post(this.PROVIDERS_URL, {...provider})
+      .pipe(map((response: Provider) => response));
+  }
+
+  updateProviderById (provider: Provider): Observable<string> {
+    return this.http
+      .put(`${this.PROVIDERS_URL}/${provider.id}`, {...provider})
+      .pipe(map((response: {message:string}) => response.message));
+  }
 }
