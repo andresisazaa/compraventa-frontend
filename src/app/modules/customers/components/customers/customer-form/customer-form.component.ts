@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Customer } from 'src/app/shared/models/customer.model';
 
@@ -9,6 +9,8 @@ import { Customer } from 'src/app/shared/models/customer.model';
 })
 export class CustomerFormComponent implements OnInit {
   @Output() submitCustomer: EventEmitter<Customer>;
+  @Input() customer?: Customer;
+  @Input() submitMessage: string;
   customerForm: FormGroup;
   constructor(private fb: FormBuilder) {
     this.submitCustomer = new EventEmitter<Customer>();
@@ -20,11 +22,11 @@ export class CustomerFormComponent implements OnInit {
 
   createCustomerForm(): FormGroup {
     return this.fb.group({
-      name: [null, [Validators.required, Validators.minLength(10)]],
-      document: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(10)]],
-      cellphone: [null, [Validators.minLength(8), Validators.maxLength(10)]],
-      email: [null, [Validators.required, Validators.email]],
-      address: [null, [Validators.minLength(10), Validators.maxLength(60)]]
+      name: [this.customer ? this.customer.name : null, [Validators.required, Validators.minLength(10)]],
+      document: [this.customer ? this.customer.document : null, [Validators.required, Validators.minLength(8), Validators.maxLength(10)]],
+      phoneNumber: [this.customer ? this.customer.phoneNumber : null, [Validators.minLength(8), Validators.maxLength(10)]],
+      email: [this.customer ? this.customer.email : null, [Validators.required, Validators.email]],
+      address: [this.customer ? this.customer.address : null, [Validators.minLength(10), Validators.maxLength(60)]]
     });
   }
 
@@ -37,8 +39,8 @@ export class CustomerFormComponent implements OnInit {
     return this.customerForm.get('document');
   }
 
-  get cellphone(): AbstractControl {
-    return this.customerForm.get('cellphone');
+  get phoneNumber(): AbstractControl {
+    return this.customerForm.get('phoneNumber');
   }
 
   get email(): AbstractControl {

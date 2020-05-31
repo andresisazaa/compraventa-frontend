@@ -20,7 +20,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let customer of customers">
+          <tr *ngFor="let customer of customers" (click)=viewCustomerDetails(customer.id)>
             <td>{{ customer.name }}</td>
             <td>{{ customer.document }}</td>
             <td>{{ customer.email }}</td>

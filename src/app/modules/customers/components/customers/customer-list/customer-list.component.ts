@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomersService } from 'src/app/core/services/customers.service';
 import { Customer } from 'src/app/shared/models/customer.model';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-customer-list',
@@ -10,7 +11,8 @@ import { Customer } from 'src/app/shared/models/customer.model';
 export class CustomerListComponent implements OnInit {
   customers: Customer[] = [];
   loadingCustomers: boolean;
-  constructor(private customersService: CustomersService) { }
+  constructor(private customersService: CustomersService,
+    private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.getCustomers();
@@ -24,5 +26,9 @@ export class CustomerListComponent implements OnInit {
         this.loadingCustomers = false;
         console.log(this.customers);
       });
+  }
+
+  viewCustomerDetails(id: number): void {
+    this.router.navigate([id], { relativeTo: this.route });
   }
 }

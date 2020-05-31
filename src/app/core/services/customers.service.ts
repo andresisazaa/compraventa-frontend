@@ -30,7 +30,7 @@ export class CustomersService {
 
   updateCustomer(customer: Customer): Observable<string> {
     return this.http.put(`${this.CUSTOMERS_URL}/${customer.id}`, { ...customer })
-      .pipe(map((response: string) => response));
+      .pipe(map((response: {message:string}) => response.message));
   }
 
   deleteCustomer(id: number): Observable<string> {

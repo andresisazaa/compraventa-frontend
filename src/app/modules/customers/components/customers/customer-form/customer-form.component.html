@@ -9,7 +9,7 @@
   </div>
   <div class="form-group">
     <label>Teléfono</label>
-    <input [formControl]="cellphone" type="number" class="form-control" />
+    <input [formControl]="phoneNumber" type="number" class="form-control" />
   </div>
   <div class="form-group">
     <label>Email</label>
@@ -20,6 +20,6 @@
     <input [formControl]="address" type="text" class="form-control" />
   </div>
   <div class="form-group">
-    <button class="btn btn-primary" type="submit">Registrar cliente</button>
+    <button class="btn btn-primary" type="submit"> {{submitMessage}} </button>
   </div>
 </form>
