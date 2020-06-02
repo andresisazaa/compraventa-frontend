@@ -14,7 +14,13 @@
         <tbody>
           <tr>
             <td>id</td>
-            <td>{{ this.sale.id }}</td>
+            <td>{{ sale.id }}</td>
+          </tr>
+          <tr>
+            <td>Valor venta</td>
+            <td>
+              {{ sale.saleValue | currency: "COP":"symbol-narrow":"1.0-0" }}
+            </td>
           </tr>
           <tr>
             <td>Fecha</td>
@@ -52,9 +58,7 @@
             <td>{{ machine.id }}</td>
             <td>{{ machine.type }}</td>
             <td>
-              {{
-                machine.saleValue | currency: "COP":"symbol-narrow":"1.0-0"
-              }}
+              {{ machine.saleValue | currency: "COP":"symbol-narrow":"1.0-0" }}
             </td>
             <td>{{ machine.modelName }}</td>
           </tr>

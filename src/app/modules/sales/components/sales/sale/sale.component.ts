@@ -5,13 +5,14 @@ import { Sale } from 'src/app/shared/models/sale.model';
 
 @Component({
   selector: 'app-sale',
-  templateUrl: './sale.component.html'
+  templateUrl: './sale.component.html',
 })
 export class SaleComponent implements OnInit {
   sale: Sale;
   constructor(
     private route: ActivatedRoute,
-    private salesService: SalesService) { }
+    private salesService: SalesService
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(({ id }) => {
@@ -21,10 +22,8 @@ export class SaleComponent implements OnInit {
   }
 
   getSaleById(id: number): void {
-    this.salesService.getSaleById(id)
-      .subscribe(sale => {
-        this.sale = sale;
-      });
+    this.salesService.getSaleById(id).subscribe((sale) => {
+      this.sale = sale;
+    });
   }
-
 }

@@ -17,6 +17,15 @@
             <td>{{ purchase.id }}</td>
           </tr>
           <tr>
+            <td>Valor compra</td>
+            <td>
+              {{
+                purchase.purchaseValue | currency: "COP":"symbol-narrow":"1.0-0"
+              }}
+            </td>
+          </tr>
+
+          <tr>
             <td>Fecha</td>
             <td>{{ purchase.date }}</td>
           </tr>

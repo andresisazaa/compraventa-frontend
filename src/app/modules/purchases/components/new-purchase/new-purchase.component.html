@@ -10,9 +10,10 @@
       <div class="form-group">
         <label>Proveedor</label>
         <select class="form-control" [formControl]="providerId">
-          <option value="1">Antioqueña de Maquinas</option>
-          <option value="2">TECNICOSTURA</option>
-          <option value="3">PARACOSER</option>
+          <option [value]="null">Seleccione...</option>
+          <option *ngFor="let provider of providers" [value]="provider.id">
+            {{ provider.businessName }}
+          </option>
         </select>
       </div>
     </div>

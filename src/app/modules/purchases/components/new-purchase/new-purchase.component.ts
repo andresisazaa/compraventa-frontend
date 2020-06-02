@@ -13,6 +13,8 @@ import Swal from 'sweetalert2';
 import { ProvidersService } from 'src/app/core/services/providers.service';
 import { ModelsService } from 'src/app/core/services/models.service';
 import { PurchasesService } from 'src/app/core/services/purchases.service';
+import { forkJoin } from 'rxjs';
+import { Provider } from 'src/app/shared/models/provider.model';
 @Component({
   selector: 'app-new-purchase',
   templateUrl: './new-purchase.component.html'
@@ -21,6 +23,7 @@ export class NewPurchaseComponent implements OnInit {
   purchaseForm: FormGroup;
   machines: FormArray;
   models: Model[] = [];
+  providers: Provider[] = [];
   constructor(
     private fb: FormBuilder,
     private providersService: ProvidersService,
@@ -29,17 +32,21 @@ export class NewPurchaseComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getModels();
+    this.getData().subscribe(([providers, models]) => {
+      this.providers = providers;
+      this.models = models;
+    });
     this.purchaseForm = this.fb.group({
       providerId: [null, Validators.required],
       machines: this.fb.array([this.createItem()]),
     });
   }
 
-  getModels(): void {
-    this.modelsService.getModels().subscribe((models) => {
-      this.models = models;
-    });
+
+  getData() {
+    const providers$ = this.providersService.getProviders();
+    const models$ = this.modelsService.getModels();
+    return forkJoin([providers$, models$]);
   }
 
   createPurchaseForm(): FormGroup {

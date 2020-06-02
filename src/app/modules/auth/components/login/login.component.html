@@ -7,11 +7,11 @@
         (ngSubmit)="onSubmit()"
       >
         <h1 class="login__form__title">ConfectApp</h1>
-        <div class="login__form__item form-group">
+        <div class="form-group">
           <label class="form__item__label">Usuario:</label>
           <input
             type="email"
-            class="form__item__input"
+            class="form-control"
             formControlName="email"
             placeholder="john.doe@example.com"
           />
@@ -22,12 +22,11 @@
             <small>¡Email no válido!</small>
           </div>
         </div>
-        <br>
-        <div class="login__form__item form-group">
+        <div class="form-group">
           <label class="form__item__label">Contraseña:</label>
           <input
             type="password"
-            class="form__item__input"
+            class="form-control"
             formControlName="password"
             placeholder="********"
           />

@@ -1,16 +1,23 @@
 <nav class="nav" [ngClass]="{ 'nav--active': open }">
   <div class="nav__wrapper">
-    <div class="nav__profile-container mx-auto mb-5">
-      <a routerLink="/perfil">
-        <div class="profile__image-container mx-auto">
-          <img
-            class="profile__image"
-            src="assets/images/user.svg"
-            alt="Profile picture"
-          />
+    <div class="nav__profile-container mx-auto">
+      <div class="profile__image-container mx-auto">
+        <i class="fa fa-2x fa-user" aria-hidden="true"></i>
+      </div>
+      <div class="user-profile mt-4">
+        <div *ngIf="!userData" class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
         </div>
-      </a>
-      <h4 class="my-2">Profile name</h4>
+        <div *ngIf="userData">
+          <h6>{{ userData.name }}</h6>
+          <h6>
+            <span class="badge badge-danger">{{ userData.posName }}</span>
+          </h6>
+          <h6>
+            <span class="badge badge-warning">{{ userData.jobName }}</span>
+          </h6>
+        </div>
+      </div>
     </div>
     <div class="nav__links-container">
       <ul class="nav__list__items">
@@ -32,7 +39,11 @@
             Compras
           </a>
         </li>
-        <li class="nav__list__item" routerLinkActive="nav__list__item--active">
+        <li
+          *ngIf="rol !== '1'"
+          class="nav__list__item"
+          routerLinkActive="nav__list__item--active"
+        >
           <a routerLink="/empleados" class="nav__link">
             <i class="fa fa-id-card nav__link__icon"></i>
             Empleados
@@ -50,7 +61,7 @@
             Proveedores
           </a>
         </li>
-        <li class="nav__list__item" routerLinkActive="nav__list__item--active">
+        <li *ngIf="rol !== '1'" class="nav__list__item" routerLinkActive="nav__list__item--active">
           <a routerLink="/reportes" class="nav__link">
             <i class="fa fa-pie-chart nav__link__icon"></i>
             Reportes

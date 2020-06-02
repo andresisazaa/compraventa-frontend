@@ -8,10 +8,27 @@ import { AuthService } from 'src/app/core/authentication/auth.service';
   styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
   @Output() navbarChanges: EventEmitter<boolean> = new EventEmitter();
   open = true;
-  ngOnInit(): void { }
+  rol: string;
+  userData: any;
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      const name = localStorage.getItem('name');
+      const posName = localStorage.getItem('posName');
+      const jobName = localStorage.getItem('jobName');
+      const jobId = localStorage.getItem('jobId');
+      this.rol = jobId;
+      this.userData = {
+        name,
+        posName,
+        jobName,
+        jobId,
+      };
+    }, 500);
+  }
   toggleSidebar() {
     this.open = !this.open;
     this.navbarChanges.emit(this.open);
