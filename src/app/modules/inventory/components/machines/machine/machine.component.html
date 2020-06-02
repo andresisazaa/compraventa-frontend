@@ -1,0 +1,132 @@
+<div class="machine" *ngIf="machine">
+  <div class="row">
+    <div class="col-md-5 offset-md-1">
+      <h3>Información básica de la maquina</h3>
+      <table class="table table-responsive table-sm">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Dato</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Id</td>
+            <td>{{ machine.id }}</td>
+          </tr>
+          <tr>
+            <td>Tipo</td>
+            <td>
+              <span
+                class="badge"
+                [ngClass]="
+                  machine.type === 'nueva' ? 'badge-info' : 'badge-warning'
+                "
+              >
+                {{ machine.type }}</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>Valor de compra</td>
+            <td>
+              {{
+                machine.purchaseValue | currency: "COP":"symbol-narrow":"1.0-0"
+              }}
+            </td>
+          </tr>
+          <tr>
+            <td>Valor de venta</td>
+            <td>
+              {{
+                machine.saleValue | currency: "COP":"symbol-narrow":"1.0-0"
+              }}
+            </td>
+          </tr>
+          <tr>
+            <td>Modelo</td>
+            <td>{{ machine.model.name }}</td>
+          </tr>
+          <tr>
+            <td>Marca</td>
+            <td>{{ machine.model.brand }}</td>
+          </tr>
+          <tr>
+            <td>Punto de venta</td>
+            <td>{{ machine.pointOfSale.name }}</td>
+          </tr>
+          <tr>
+            <td>Dirección</td>
+            <td>{{ machine.pointOfSale.address }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-5">
+      <h3>Historial</h3>
+      <table class="table table-responsive table-sm center">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Estado</th>
+            <th>Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let status of machine.statuses">
+            <td>{{ status.name }}</td>
+            <td>{{ status.date }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <button
+        *ngIf="isAdquirida()"
+        (click)="onOpenModal()"
+        class="btn btn-primary"
+      >
+        Disponer a la venta
+      </button>
+    </div>
+  </div>
+  <div
+    *ngIf="isAdquirida()"
+    [ngClass]="{ 'd-block': openModal }"
+    class="modal d-block"
+    tabindex="-1"
+    role="dialog"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Poner máquina a la venta</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span (click)="onCloseModal()" aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="machineForm" (ngSubmit)="submit()">
+            <div class="form-group">
+              <label>Valor venta:</label>
+              <input
+                class="form-control"
+                type="number"
+                formControlName="saleValue"
+              />
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block">
+                Poner a la venta
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

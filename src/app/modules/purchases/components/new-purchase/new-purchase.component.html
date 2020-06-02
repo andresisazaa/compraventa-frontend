@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col">
+    <h3 class="text-center font-weight-bolder">Realiza una nueva compra</h3>
+  </div>
+</div>
+
+<form [formGroup]="purchaseForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-sm-6 mx-auto">
+      <div class="form-group">
+        <label>Proveedor</label>
+        <select class="form-control" [formControl]="providerId">
+          <option [value]="null">Seleccione...</option>
+          <option *ngFor="let provider of providers" [value]="provider.id">
+            {{ provider.businessName }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+      <div class="form-group">
+        <label>Máquinas</label>
+        <div
+          formArrayName="machines"
+          *ngFor="let item of machinesControls; let i = index"
+        >
+          <div [formGroupName]="i">
+            <div class="row my-sm-2">
+              <div class="col-sm-4 offset-sm-1 form-group">
+                <select class="form-control" formControlName="modelId">
+                  <option *ngFor="let model of models" [value]="model.id">
+                    {{ model.modelName }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-sm-3 form-group">
+                <select class="form-control" formControlName="type">
+                  <option value="nueva" selected>nueva</option>
+                  <option value="usada">usada</option>
+                </select>
+              </div>
+              <div class="col-sm-3">
+                <input
+                  class="form-control"
+                  formControlName="price"
+                  placeholder="Precio"
+                  type="number"
+                />
+              </div>
+              <div class="col-sm-1 form-group">
+                <button
+                  class="btn btn-danger btn-sm my-1"
+                  (click)="removeItem(i)"
+                  type="button"
+                >
+                  <i class="fa fa-trash align-middle" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button
+        class="btn btn-success btn-block w-25 mx-auto my-2"
+        (click)="addItem()"
+        type="button"
+      >
+        Agregar máquina
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col mx-auto">
+      <div class="form-group">
+        <button class="btn btn-primary btn-block w-25 mx-auto" type="submit">
+          Realizar compra
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

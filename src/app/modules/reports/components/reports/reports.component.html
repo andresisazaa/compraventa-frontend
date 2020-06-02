@@ -1,0 +1,26 @@
+<app-header title="Reportes" description="Estadísticas"></app-header>
+
+<div class="container mt-4">
+  <div class="row mx-auto">
+    <div class="col mb-4">
+      <div *ngFor="let chart of charts">
+        <google-chart
+          width="600"
+          height="400"
+          [title]="chart.title"
+          [type]="chart.type"
+          [data]="chart.data"
+        >
+        </google-chart>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col mb-4">
+      <h4>Reporte financiero de compras y ventas del último mes.</h4>
+      <button type="submit" class="btn btn-primary" (click)="downloadFile()">
+        Descargar
+      </button>
+    </div>
+  </div>
+</div>

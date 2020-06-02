@@ -1,42 +1,86 @@
-<nav class="nav" [ngClass]="{'nav--active': open}">
-  <div class="nav__profile-container mx-auto" style="height: 80px;">
-    <a routerLink="/perfil">
+<nav class="nav" [ngClass]="{ 'nav--active': open }">
+  <div class="nav__wrapper">
+    <div class="nav__profile-container mx-auto">
       <div class="profile__image-container mx-auto">
-        <img class="profile__image" src="assets/images/user.svg" alt="Profile picture" />
+        <i class="fa fa-2x fa-user" aria-hidden="true"></i>
       </div>
-    </a>
-    <h3>Pepito Perez</h3>
-  </div>
-  <div class="nav__links-container">
-    <ul class="nav__list__items">
-      <li class="nav__list__item" routerLinkActive="nav__list__item--active">
-        <a routerLink="/inventario" class="nav__link">
-          <i class="fa fa-cubes nav__link__icon"></i>
-          Inventario</a>
-      </li>
-      <li class="nav__list__item" routerLinkActive="nav__list__item--active">
-        <a routerLink="/ventas" class="nav__link">
-          <i class="fa fa-line-chart nav__link__icon"></i>
-          Ventas</a>
-      </li>
-      <li class="nav__list__item" routerLinkActive="nav__list__item--active">
-        <a routerLink="/compras" class="nav__link">
-          <i class="fa fa-shopping-bag nav__link__icon"></i>
-          Compras</a>
-      </li>
-      <li class="nav__list__item" routerLinkActive="nav__list__item--active">
-        <a routerLink="/empleados" class="nav__link">
-          <i class="fa fa-users nav__link__icon"></i>
-          Empleados</a>
-      </li>
-      <li class="nav__list__item">
-        <a (click)="logout()" class="nav__link">
-          <i class="fa fa-sign-out nav__link__icon"></i>
-          Cerrar sesión</a>
-      </li>
-    </ul>
+      <div class="user-profile mt-4">
+        <div *ngIf="!userData" class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div *ngIf="userData">
+          <h6>{{ userData.name }}</h6>
+          <h6>
+            <span class="badge badge-danger">{{ userData.posName }}</span>
+          </h6>
+          <h6>
+            <span class="badge badge-warning">{{ userData.jobName }}</span>
+          </h6>
+        </div>
+      </div>
+    </div>
+    <div class="nav__links-container">
+      <ul class="nav__list__items">
+        <li class="nav__list__item" routerLinkActive="nav__list__item--active">
+          <a routerLink="/inventario" class="nav__link">
+            <i class="fa fa-cubes nav__link__icon"></i>
+            Inventario
+          </a>
+        </li>
+        <li class="nav__list__item" routerLinkActive="nav__list__item--active">
+          <a routerLink="/ventas" class="nav__link">
+            <i class="fa fa-line-chart nav__link__icon"></i>
+            Ventas
+          </a>
+        </li>
+        <li class="nav__list__item" routerLinkActive="nav__list__item--active">
+          <a routerLink="/compras" class="nav__link">
+            <i class="fa fa-shopping-bag nav__link__icon"></i>
+            Compras
+          </a>
+        </li>
+        <li
+          *ngIf="rol !== '1'"
+          class="nav__list__item"
+          routerLinkActive="nav__list__item--active"
+        >
+          <a routerLink="/empleados" class="nav__link">
+            <i class="fa fa-id-card nav__link__icon"></i>
+            Empleados
+          </a>
+        </li>
+        <li class="nav__list__item" routerLinkActive="nav__list__item--active">
+          <a routerLink="/clientes" class="nav__link">
+            <i class="fa fa-users nav__link__icon"></i>
+            Clientes
+          </a>
+        </li>
+        <li class="nav__list__item" routerLinkActive="nav__list__item--active">
+          <a routerLink="/proveedores" class="nav__link">
+            <i class="fa fa-handshake-o nav__link__icon"></i>
+            Proveedores
+          </a>
+        </li>
+        <li *ngIf="rol !== '1'" class="nav__list__item" routerLinkActive="nav__list__item--active">
+          <a routerLink="/reportes" class="nav__link">
+            <i class="fa fa-pie-chart nav__link__icon"></i>
+            Reportes
+          </a>
+        </li>
+        <li>
+          <button (click)="logout()" class="logout__button bg-danger">
+            <i class="fa fa-sign-out nav__link__icon"></i>
+            Cerrar sesión
+          </button>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
-<button [ngClass]="{'nav__button--open': !open}" class="nav__button" (click)="toggleSidebar()">
-  <i class="fa fa-bars"></i>
+<button
+  [ngClass]="{ 'nav__button--open': !open }"
+  class="nav__button"
+  (click)="toggleSidebar()"
+>
+  <i class="fa fa-bars pb-1"></i>
 </button>
