@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 export class MachinesService {
   private MACHINES_URL = `${environment.backendUrl}/machines`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getMachines(): Observable<[]> {
     return this.http
@@ -23,9 +23,18 @@ export class MachinesService {
   }
 
   getAvailableMachines(): Observable<[]> {
-    const params = new HttpParams()
-      .set('status', '2');
-    return this.http.get(this.MACHINES_URL, { params })
+    const params = new HttpParams().set('status', '2');
+    return this.http
+      .get(this.MACHINES_URL, { params })
       .pipe(map((response: []) => response));
+  }
+
+  updateMachineById(machineData: object): Observable<string> {
+    return this.http
+      // tslint:disable-next-line: no-string-literal
+      .put(`${this.MACHINES_URL}/${machineData['id']}`, {
+        ...machineData,
+      })
+      .pipe(map((response: { message: string }) => response.message));
   }
 }
