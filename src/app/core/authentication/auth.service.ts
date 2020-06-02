@@ -3,12 +3,14 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
+import { Employee } from 'src/app/shared/models/employee.model';
+import { EmployeesService } from '../services/employees.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private afAuth: AngularFireAuth) {}
+  constructor(private afAuth: AngularFireAuth, private employeeService: EmployeesService) {}
 
   async login(email: string, password: string) {
     try {
@@ -16,6 +18,7 @@ export class AuthService {
         email,
         password
       );
+      this.employeeService.getEmployeeByEmail(email).subscribe(console.log);
       const token = await authUser.user.getIdToken();
       this.saveToken(token);
       return {

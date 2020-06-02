@@ -29,4 +29,7 @@ export class EmployeesService {
   updateEmployee(id: number, employeeData){
     return this.http.put(`${this.EMPLOYEES_URL}/${id}`, employeeData);
   }
+  getEmployeeByEmail(email: string){
+    return this.http.post(`${this.EMPLOYEES_URL}/user`, {email});
+  }
 }
