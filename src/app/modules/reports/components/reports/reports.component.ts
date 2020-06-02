@@ -11,13 +11,13 @@ import { GoogleChartComponent } from 'angular-google-charts';
 export class ReportsComponent implements OnInit {
   public charts = [
     {
-      title: 'Ventas(COP) por punto de compra/venta',
+      title: 'Ventas en pesos colombianos (COP) por empleado',
       type: 'PieChart',
       data: [[]],
       roles: [],
     },
     {
-      title: 'Compras(COP) por punto de compra/venta',
+      title: 'Compras en pesos colombianos (COP) por empleado',
       type: 'ColumnChart',
       data: [[]],
       roles: [],
